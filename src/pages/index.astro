@@ -1,0 +1,60 @@
+---
+// src/pages/index.astro
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="JP Yepez — Senior Frontend Developer">
+  <!-- Subtle gradient background -->
+  <div
+    class="fixed inset-0 -z-10 bg-linear-to-br from-gray-950 via-gray-900 to-gray-950"
+  >
+  </div>
+
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center max-w-xl">
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+        JP Yepez
+      </h1>
+
+      <p class="text-xl md:text-2xl text-gray-400 mb-2">
+        Senior Frontend Developer
+      </p>
+
+      <p class="text-gray-500 mb-8">Auckland, New Zealand</p>
+
+      <p class="text-gray-400 mb-10 leading-relaxed">
+        I build products and experiences on the web.<br
+          class="hidden sm:inline"
+        />
+        Available for select contract work.
+      </p>
+
+      <div class="flex flex-wrap gap-x-8 gap-y-4 justify-center text-sm">
+        <a
+          href="https://github.com/YOUR_USERNAME"
+          class="text-gray-400 hover:text-white transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/YOUR_USERNAME"
+          class="text-gray-400 hover:text-white transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="mailto:hello@jpyepez.com"
+          class="text-gray-400 hover:text-white transition-colors"
+        >
+          hello@jpyepez.com
+        </a>
+      </div>
+
+      <p class="mt-16 text-sm text-gray-600">More coming soon.</p>
+    </div>
+  </main>
+</Base>
