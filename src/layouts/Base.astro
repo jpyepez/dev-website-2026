@@ -1,6 +1,8 @@
 ---
 // src/layouts/Base.astro
+import "@fontsource-variable/inter";
 import "../styles/global.css";
+import Header from "../components/layout/Header.astro";
 
 interface Props {
   title: string;
@@ -9,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = "Senior Frontend Developer based in Auckland, New Zealand.",
+  description = "Full-stack engineer and frontend specialist. TypeScript, React, infrastructure, and testing.",
 } = Astro.props;
 
 const siteUrl = "https://jpyepez.com";
@@ -33,10 +35,16 @@ const siteUrl = "https://jpyepez.com";
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-950 text-gray-100 antialiased">
+  <body class="font-sans bg-gray-950 text-gray-100 antialiased">
+    <Header />
     <slot />
   </body>
 </html>
