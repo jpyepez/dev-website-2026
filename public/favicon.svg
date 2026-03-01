@@ -1,22 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="#ffffff"></rect>
-  <!-- Corner brackets -->
-  <path d="M0,5 L0,0 L5,0" fill="none" stroke="#1a2035" stroke-width="1.5" opacity="0.5"></path>
-  <path d="M27,0 L32,0 L32,5" fill="none" stroke="#1a2035" stroke-width="1.5" opacity="0.5"></path>
-  <path d="M0,27 L0,32 L5,32" fill="none" stroke="#1a2035" stroke-width="1.5" opacity="0.5"></path>
-  <path d="M27,32 L32,32 L32,27" fill="none" stroke="#1a2035" stroke-width="1.5" opacity="0.5"></path>
   <!-- Row 1 -->
-  <rect x="4" y="4" width="6" height="6" fill="#1a2035" opacity="0.1"></rect>
-  <rect x="13" y="4" width="6" height="6" fill="#1a2035" opacity="0.65"></rect>
-  <rect x="22" y="4" width="6" height="6" fill="#1a2035" opacity="0.2"></rect>
+  <rect x="3" y="3" width="7" height="7" fill="#1a2035" opacity="0.12"></rect>
+  <rect x="13" y="3" width="7" height="7" fill="#1a2035" opacity="0.7"></rect>
+  <rect x="23" y="3" width="7" height="7" fill="#1a2035" opacity="0.2"></rect>
   <!-- Row 2 -->
-  <rect x="4" y="13" width="6" height="6" fill="#1a2035" opacity="0.75"></rect>
-  <rect x="13" y="13" width="6" height="6" fill="#1a2035" opacity="1"></rect>
-  <rect x="22" y="13" width="6" height="6" fill="#1a2035" opacity="0.3"></rect>
+  <rect x="3" y="13" width="7" height="7" fill="#1a2035" opacity="0.8"></rect>
+  <rect x="13" y="13" width="7" height="7" fill="#1a2035" opacity="1"></rect>
+  <rect x="23" y="13" width="7" height="7" fill="#1a2035" opacity="0.35"></rect>
   <!-- Row 3 -->
-  <rect x="4" y="22" width="6" height="6" fill="#1a2035" opacity="0.2"></rect>
-  <rect x="13" y="22" width="6" height="6" fill="#1a2035" opacity="0.07"></rect>
-  <rect x="22" y="22" width="6" height="6" fill="#1a2035" opacity="0.55"></rect>
+  <rect x="3" y="23" width="7" height="7" fill="#1a2035" opacity="0.25"></rect>
+  <rect x="13" y="23" width="7" height="7" fill="#1a2035" opacity="0.08"></rect>
+  <rect x="23" y="23" width="7" height="7" fill="#1a2035" opacity="0.6"></rect>
 </svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
 @media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
 </style></svg>
