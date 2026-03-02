@@ -4,15 +4,14 @@ interface Props {
   values: string[];
 }
 const { label, values } = Astro.props;
+import Chip from "../../components/ui/Chip.astro";
 ---
 
 <div class="flex flex-col sm:flex-row sm:gap-4 sm:items-start">
   <dt class="text-gray-400 sm:w-32 shrink-0 pt-1.5 sm:pt-0">{label}</dt>
   <dd class="flex flex-wrap gap-2">
     {values.map((value) => (
-      <span class="inline-flex items-center rounded-md bg-gray-800/80 px-2.5 py-1 text-sm text-gray-200">
-        {value}
-      </span>
+      <Chip>{value}</Chip>
     ))}
   </dd>
 </div>
