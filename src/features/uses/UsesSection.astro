@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  items: [string, string[]][];
+}
+const { title, items } = Astro.props;
+import UsesDefinitionItem from "./UsesDefinitionItem.astro";
+---
+
+<section>
+  <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">
+    {title}
+  </h2>
+  <dl class="space-y-3">
+    {items.map(([label, values]) => (
+      <UsesDefinitionItem label={label} values={values} />
+    ))}
+  </dl>
+</section>

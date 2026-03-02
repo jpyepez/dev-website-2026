@@ -1,18 +1,69 @@
 ---
 // src/pages/uses.astro
 import Base from "../layouts/Base.astro";
+import UsesSection from "../features/uses/UsesSection.astro";
+
+const sections: { title: string; items: [string, string[]][] }[] = [
+  {
+    title: "Hardware",
+    items: [
+      ["Editor", ["Cursor", "Spacemacs-style keybindings"]],
+      ["Keyboard", ["Ergodox"]],
+      ["Mouse", ["Logitech Lift"]],
+    ],
+  },
+  {
+    title: "Terminal & Shell",
+    items: [
+      ["Terminal", ["iTerm2"]],
+      ["Shell", ["zsh", "Oh My Zsh"]],
+    ],
+  },
+  {
+    title: "Stack",
+    items: [
+      ["Frameworks", ["React", "Next.js", "Astro", "React Native"]],
+      ["Languages", ["TypeScript", "JavaScript"]],
+      ["Styling", ["Tailwind"]],
+      ["Backend", ["Firebase", "Supabase", "Convex"]],
+      ["Package Manager", ["pnpm", "bun"]],
+      ["Browser", ["Helium"]],
+      ["API Testing", ["Yaak"]],
+    ],
+  },
+  {
+    title: "Creative",
+    items: [
+      ["Design", ["Figma"]],
+      ["2D / Data Viz", ["Visx", "D3"]],
+      ["3D", ["Three.js", "GLSL"]],
+    ],
+  },
+  {
+    title: "Productivity",
+    items: [
+      ["Launcher", ["Raycast"]],
+    ],
+  },
+];
 ---
 
 <Base
   title="Uses — JP Yepez"
   description="Tools, setup, and stack I use day to day."
 >
-  <main class="min-h-screen flex items-center justify-center px-4">
-    <div class="max-w-xl text-left">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Uses</h1>
-      <p class="text-gray-400 leading-relaxed">
-        Tools, setup, and stack I use day to day. Coming soon.
+  <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
+    <div class="max-w-xl w-full">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Uses</h1>
+      <p class="text-gray-400 leading-relaxed mb-12">
+        Tools, setup, and stack I use day to day.
       </p>
+
+      <div class="space-y-10">
+        {sections.map((section) => (
+          <UsesSection title={section.title} items={section.items} />
+        ))}
+      </div>
     </div>
   </main>
 </Base>
