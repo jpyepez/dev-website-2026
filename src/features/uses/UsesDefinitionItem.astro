@@ -4,14 +4,14 @@ interface Props {
   values: string[];
 }
 const { label, values } = Astro.props;
-import Chip from "../../components/ui/Chip.astro";
+import Badge from "../../components/ui/Badge.astro";
 ---
 
 <div class="flex flex-col sm:flex-row sm:gap-4 sm:items-start">
-  <dt class="text-gray-400 sm:w-32 shrink-0 pt-1.5 sm:pt-0">{label}</dt>
+  <dt class="text-base-content/80 sm:w-32 shrink-0 pt-1.5 sm:pt-0">{label}</dt>
   <dd class="flex flex-wrap gap-2">
     {values.map((value) => (
-      <Chip>{value}</Chip>
+      <Badge>{value}</Badge>
     ))}
   </dd>
 </div>

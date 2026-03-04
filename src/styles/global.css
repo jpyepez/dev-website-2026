@@ -1,4 +1,18 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: night --default;
+}
+@plugin "daisyui/theme" {
+  name: "night";
+  default: true;
+  color-scheme: dark;
+  /* Dark page background and light text (match gray-950 / gray-100) */
+  --color-base-100: oklch(0.13 0.015 264);
+  --color-base-200: oklch(0.18 0.018 264);
+  --color-base-300: oklch(0.24 0.02 264);
+  --color-base-content: oklch(0.97 0.004 264);
+}
+
 @theme {
   --font-sans: "Inter Variable", "Inter", sans-serif;
 }

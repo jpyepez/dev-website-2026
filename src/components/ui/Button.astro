@@ -1,0 +1,29 @@
+---
+interface Props {
+  type?: "button" | "submit" | "reset";
+  variant?: "primary" | "ghost" | "outline" | "secondary";
+  fullWidth?: boolean;
+}
+
+const {
+  type = "button",
+  variant = "primary",
+  fullWidth = false,
+} = Astro.props as Props;
+
+const baseClass = "btn";
+const variantClass =
+  variant === "ghost"
+    ? "btn-ghost"
+    : variant === "outline"
+      ? "btn-outline"
+      : variant === "secondary"
+        ? "btn-secondary"
+        : "btn-primary";
+const widthClass = fullWidth ? "w-full" : "";
+---
+
+<button type={type} class={`${baseClass} ${variantClass} ${widthClass}`}>
+  <slot />
+</button>
+

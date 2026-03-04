@@ -1,7 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import Input from "../components/ui/Input.astro";
 import Select from "../components/ui/Select.astro";
 import Textarea from "../components/ui/Textarea.astro";
+import Button from "../components/ui/Button.astro";
 
 const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY as string;
 
@@ -19,8 +21,10 @@ const topicOptions = [
 >
   <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
     <div class="max-w-xl w-full">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Contact</h1>
-      <p class="text-gray-400 leading-relaxed mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+        Contact
+      </h1>
+      <p class="text-base-content/90 leading-relaxed mb-12">
         Get in touch for freelance, consulting, or collaboration.
       </p>
 
@@ -30,41 +34,27 @@ const topicOptions = [
         data-access-key={accessKey}
         method="post"
       >
-        <input type="checkbox" name="botcheck" class="hidden" aria-hidden="true" />
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="hidden"
+          aria-hidden="true"
+        />
 
-        <div class="space-y-1.5">
-          <label for="name" class="block text-sm font-medium text-gray-400">
-            Name <span class="text-gray-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            class="w-full rounded-md border border-gray-800 bg-gray-900/50 px-3 py-2 text-gray-100 placeholder-gray-500 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
-            placeholder="Your name"
-            aria-invalid="false"
-            aria-describedby="name-error"
-          />
-          <p id="name-error" class="text-sm text-red-400 hidden" role="alert"></p>
-        </div>
+        <Input
+          name="name"
+          label="Name"
+          required
+          placeholder="Your name"
+        />
 
-        <div class="space-y-1.5">
-          <label for="email" class="block text-sm font-medium text-gray-400">
-            Email <span class="text-gray-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="w-full rounded-md border border-gray-800 bg-gray-900/50 px-3 py-2 text-gray-100 placeholder-gray-500 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
-            placeholder="you@example.com"
-            aria-invalid="false"
-            aria-describedby="email-error"
-          />
-          <p id="email-error" class="text-sm text-red-400 hidden" role="alert"></p>
-        </div>
+        <Input
+          name="email"
+          label="Email"
+          type="email"
+          required
+          placeholder="you@example.com"
+        />
 
         <Select
           name="subject"
@@ -82,14 +72,15 @@ const topicOptions = [
           placeholder="Your message…"
         />
 
-        <button
-          type="submit"
-          class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 transition-colors"
-        >
-          Send message
-        </button>
+        <Button type="submit">Send message</Button>
 
-        <div id="result" class="text-sm text-gray-400" role="status" aria-live="polite"></div>
+        <div
+          id="result"
+          class="text-sm text-base-content/80"
+          role="status"
+          aria-live="polite"
+        >
+        </div>
       </form>
     </div>
   </main>
@@ -101,7 +92,12 @@ const topicOptions = [
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const resultEl = document.getElementById("result") as HTMLDivElement;
 
-  const topicValues = ["contact-freelance", "consulting", "collaboration", "just-saying-hi"] as const;
+  const topicValues = [
+    "contact-freelance",
+    "consulting",
+    "collaboration",
+    "just-saying-hi",
+  ] as const;
   const contactSchema = z.object({
     name: z.string().min(1, { error: "Name is required" }),
     email: z.email({ error: "Invalid email" }),
@@ -115,11 +111,17 @@ const topicOptions = [
       el.textContent = "";
       (el as HTMLElement).classList.add("hidden");
     });
-    form.querySelectorAll("[aria-invalid]").forEach((el) => el.setAttribute("aria-invalid", "false"));
+    form
+      .querySelectorAll("[aria-invalid]")
+      .forEach((el) => el.setAttribute("aria-invalid", "false"));
   }
 
   function setFieldError(name: string, message: string) {
-    const input = form.querySelector(`[name="${name}"]`) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
+    const input = form.querySelector(`[name="${name}"]`) as
+      | HTMLInputElement
+      | HTMLSelectElement
+      | HTMLTextAreaElement
+      | null;
     const errorEl = form.querySelector(`#${name}-error`) as HTMLElement | null;
     if (input) input.setAttribute("aria-invalid", "true");
     if (errorEl) {
@@ -130,7 +132,7 @@ const topicOptions = [
 
   function setResult(message: string, isError = false) {
     resultEl.textContent = message;
-    resultEl.className = `text-sm ${isError ? "text-red-400" : "text-gray-400"}`;
+    resultEl.className = `text-sm ${isError ? "text-error" : "text-base-content/80"}`;
   }
 
   form.addEventListener("submit", async (e) => {
@@ -185,13 +187,19 @@ const topicOptions = [
         body: JSON.stringify(raw),
       });
 
-      const data = (await response.json()) as { success?: boolean; message?: string };
+      const data = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
 
       if (response.ok && data.success) {
         form.reset();
         setResult("Thanks, your message was sent.");
       } else {
-        setResult(data.message ?? "Something went wrong. Please try again.", true);
+        setResult(
+          data.message ?? "Something went wrong. Please try again.",
+          true
+        );
       }
     } catch {
       setResult("Something went wrong. Please try again.", true);
