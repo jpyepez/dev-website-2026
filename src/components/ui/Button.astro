@@ -3,12 +3,15 @@ interface Props {
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "ghost" | "outline" | "secondary";
   fullWidth?: boolean;
+  /** Optional id so callers can target this button (e.g. to set loading state via classList.add("is-loading") and disabled). */
+  id?: string;
 }
 
 const {
   type = "button",
   variant = "primary",
   fullWidth = false,
+  id,
 } = Astro.props as Props;
 
 const baseClass = "btn";
@@ -23,7 +26,36 @@ const variantClass =
 const widthClass = fullWidth ? "w-full" : "";
 ---
 
-<button type={type} class={`${baseClass} ${variantClass} ${widthClass}`}>
-  <slot />
+<button
+  type={type}
+  id={id}
+  class={`${baseClass} ${variantClass} ${widthClass}`}
+>
+  <span class="button-text">
+    <slot />
+  </span>
+  <span
+    class="loading loading-spinner loading-xs button-loading"
+    aria-hidden="true"></span>
 </button>
 
+<style>
+  .button-loading {
+    display: none;
+  }
+  /* Use is-loading so DaisyUI’s .btn.loading doesn’t affect layout */
+  button.is-loading {
+    position: relative;
+  }
+  button.is-loading .button-text {
+    visibility: hidden;
+  }
+  button.is-loading .button-loading {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+  }
+</style>

@@ -3,6 +3,7 @@
 import "@fontsource-variable/inter";
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
+import ToastContainer from "../components/layout/ToastContainer.astro";
 
 interface Props {
   title: string;
@@ -46,5 +47,6 @@ const siteUrl = "https://jpyepez.com";
   <body class="font-sans bg-base-100 text-base-content antialiased">
     <Header />
     <slot />
+    <ToastContainer />
   </body>
 </html>

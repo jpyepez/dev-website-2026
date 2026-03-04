@@ -72,7 +72,7 @@ const topicOptions = [
           placeholder="Your message…"
         />
 
-        <Button type="submit">Send message</Button>
+        <Button type="submit" id="contact-submit">Send message</Button>
 
         <div
           id="result"
@@ -135,6 +135,18 @@ const topicOptions = [
     resultEl.className = `text-sm ${isError ? "text-error" : "text-base-content/80"}`;
   }
 
+  function showSuccessToast(message: string) {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+    const alert = document.createElement("div");
+    alert.className = "alert alert-success";
+    const span = document.createElement("span");
+    span.textContent = message;
+    alert.appendChild(span);
+    container.appendChild(alert);
+    setTimeout(() => alert.remove(), 5000);
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearFieldErrors();
@@ -175,7 +187,11 @@ const topicOptions = [
       return;
     }
 
-    setResult("Sending…");
+    const submitBtn = document.getElementById("contact-submit");
+    if (submitBtn) {
+      submitBtn.classList.add("is-loading");
+      (submitBtn as HTMLButtonElement).disabled = true;
+    }
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -194,7 +210,11 @@ const topicOptions = [
 
       if (response.ok && data.success) {
         form.reset();
-        setResult("Thanks, your message was sent.");
+        setResult("");
+        showSuccessToast("Thanks, your message was sent.");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2500);
       } else {
         setResult(
           data.message ?? "Something went wrong. Please try again.",
@@ -203,6 +223,11 @@ const topicOptions = [
       }
     } catch {
       setResult("Something went wrong. Please try again.", true);
+    } finally {
+      if (submitBtn) {
+        submitBtn.classList.remove("is-loading");
+        (submitBtn as HTMLButtonElement).disabled = false;
+      }
     }
   });
 </script>
