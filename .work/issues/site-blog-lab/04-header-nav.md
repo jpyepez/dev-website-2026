@@ -1,7 +1,7 @@
 ---
 slice: 4
 title: Header nav — add Writing and Lab entries
-status: ready
+status: in-progress
 type: hitl
 blocked_by: [1, 3]
 parent_prd: site-blog-lab
@@ -22,9 +22,10 @@ Open question — nav label note.
 
 ## Decision point (HITL)
 
-- [ ] Confirm nav label: **"Writing"** (PRD recommendation, dev-aesthetic)
+- [x] Confirm nav label: **"Writing"** (PRD recommendation, dev-aesthetic)
       or **"Blog"** (more conventional, may scan as more discoverable).
       URL is `/blog` regardless.
+      **Decision: "Writing"** (2026-05-18) — matches dev-aesthetic per PRD recommendation.
 
 ## Acceptance criteria
 
