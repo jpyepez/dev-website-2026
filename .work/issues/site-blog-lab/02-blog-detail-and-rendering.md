@@ -1,7 +1,7 @@
 ---
 slice: 2
 title: Blog module — detail route and post rendering
-status: ready
+status: done
 type: afk
 blocked_by: [1]
 parent_prd: site-blog-lab
@@ -23,25 +23,25 @@ See `.work/prds/site-blog-lab.md` — Module — Blog (deep) and Draft handling.
 
 ## Acceptance criteria
 
-- [ ] `src/pages/blog/[...slug].astro` resolves entries from the `blog`
+- [x] `src/pages/blog/[...slug].astro` resolves entries from the `blog`
       collection and renders them via the content-collection render API
-- [ ] Detail page shows `title`, `pubDate` (formatted), `description`, and
+- [x] Detail page shows `title`, `pubDate` (formatted), `description`, and
       the rendered MDX body
-- [ ] If `updatedDate` is present, it is shown alongside `pubDate`
-- [ ] Detail page uses `Base.astro` and sets `title` / `description` from
+- [x] If `updatedDate` is present, it is shown alongside `pubDate`
+- [x] Detail page uses `Base.astro` and sets `title` / `description` from
       the entry's frontmatter
-- [ ] Index route (`src/pages/blog/index.astro`) renders a list of published
+- [x] Index route (`src/pages/blog/index.astro`) renders a list of published
       posts (title, date, description, link) when entries exist; empty state
       from slice 1 still renders when the collection is empty
-- [ ] Posts with `draft: true` do not appear on the index and do not produce
+- [x] Posts with `draft: true` do not appear on the index and do not produce
       a published detail route in the build output
-- [ ] Index list is sorted by `pubDate` descending
-- [ ] During development, add a temporary fixture MDX entry; confirm it
+- [x] Index list is sorted by `pubDate` descending
+- [x] During development, add a temporary fixture MDX entry; confirm it
       shows on the index, links to a working detail page, and is excluded
       when its frontmatter is flipped to `draft: true`. Remove the fixture
       before committing.
-- [ ] `bun build` succeeds; `bunx astro check` passes
-- [ ] Built sitemap includes the index but does not include any draft slugs
+- [x] `bun build` succeeds; `bunx astro check` passes
+- [x] Built sitemap includes the index but does not include any draft slugs
 
 ## Notes
 
