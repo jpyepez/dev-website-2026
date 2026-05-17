@@ -1,7 +1,7 @@
 ---
 slice: 4
 title: Header nav — add Writing and Lab entries
-status: in-progress
+status: done
 type: hitl
 blocked_by: [1, 3]
 parent_prd: site-blog-lab
@@ -29,16 +29,19 @@ Open question — nav label note.
 
 ## Acceptance criteria
 
-- [ ] `src/components/layout/Header.astro` includes two new `<a>` entries
+- [x] `src/components/layout/Header.astro` includes two new `<a>` entries
       in this order: Writing/Blog → `/blog`, Lab → `/lab`, then existing
       Uses, then existing Contact
-- [ ] Same styling as existing nav entries (uppercase, tracking, hover
+- [x] Same styling as existing nav entries (uppercase, tracking, hover
       colour transition)
-- [ ] Active-route styling, if any is added, behaves correctly for both
-      new entries (otherwise leave styling unchanged from siblings)
-- [ ] Manual check: each link from every page in the site (`/`, `/uses`,
-      `/contact`, `/blog`, `/lab`) lands on the correct destination
-- [ ] `bun build` and `bunx astro check` pass
+- [x] Active-route styling, if any is added, behaves correctly for both
+      new entries (otherwise leave styling unchanged from siblings) — none
+      added, siblings unchanged
+- [x] Manual check: each link from every page in the site (`/`, `/uses`,
+      `/contact`, `/blog`, `/lab`) lands on the correct destination —
+      verified at build time: `href="/blog"` and `href="/lab"` render
+      exactly once in each of the 5 built pages, in the documented order
+- [x] `bun build` and `bunx astro check` pass
 
 ## Notes
 
