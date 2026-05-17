@@ -11,10 +11,33 @@ const latestPost = posts[0];
 const latestPiece = [...pieces].sort(
   (a, b) => b.date.getTime() - a.date.getTime()
 )[0];
+
+const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 ---
 
 {
   (latestPost || latestPiece) && (
-    <section class="latest-block mt-12" />
+    <section class="latest-block mt-12 space-y-6">
+      {latestPost && (
+        <a href={`/blog/${latestPost.id}`} class="group block">
+          <div class="text-xs uppercase tracking-wide text-base-content/60 mb-1">
+            Writing
+          </div>
+          <h2 class="text-lg font-semibold tracking-tight text-base-content/90 group-hover:text-primary transition-colors">
+            {latestPost.data.title}
+          </h2>
+          <time
+            datetime={latestPost.data.pubDate.toISOString()}
+            class="text-sm text-base-content/60"
+          >
+            {dateFormatter.format(latestPost.data.pubDate)}
+          </time>
+        </a>
+      )}
+    </section>
   )
 }
