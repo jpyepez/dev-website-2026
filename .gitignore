@@ -26,3 +26,6 @@ pnpm-debug.log*
 # VSCode
 .vscode/
 .vercel
+
+# local work scratch
+.work/notes/
