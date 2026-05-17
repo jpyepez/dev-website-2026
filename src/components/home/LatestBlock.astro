@@ -38,6 +38,22 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
           </time>
         </a>
       )}
+      {latestPiece && (
+        <a href={`/lab/${latestPiece.slug}`} class="group block">
+          <div class="text-xs uppercase tracking-wide text-base-content/60 mb-1">
+            Lab
+          </div>
+          <h2 class="text-lg font-semibold tracking-tight text-base-content/90 group-hover:text-primary transition-colors">
+            {latestPiece.title}
+          </h2>
+          <time
+            datetime={latestPiece.date.toISOString()}
+            class="text-sm text-base-content/60"
+          >
+            {dateFormatter.format(latestPiece.date)}
+          </time>
+        </a>
+      )}
     </section>
   )
 }
