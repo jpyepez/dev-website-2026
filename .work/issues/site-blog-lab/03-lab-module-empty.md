@@ -1,7 +1,7 @@
 ---
 slice: 3
 title: Lab module — index, shared frame, empty state
-status: ready
+status: done
 type: afk
 blocked_by: []
 parent_prd: site-blog-lab
@@ -23,20 +23,20 @@ rationale.
 
 ## Acceptance criteria
 
-- [ ] `src/features/lab/pieces.ts` exports a typed, ordered list of pieces.
+- [x] `src/features/lab/pieces.ts` exports a typed, ordered list of pieces.
       Type covers `slug`, `title`, `summary`, `date`, and `thumbnail`
       (path or component reference — pick whichever fits the layout).
       List ships empty.
-- [ ] `src/components/layout/LabFrame.astro` is a layout/component exposing
+- [x] `src/components/layout/LabFrame.astro` is a layout/component exposing
       named slots: a title (or prop), a writeup slot, and a demo slot.
       Uses `Base.astro` underneath and accepts `title` / `description`
       props for page metadata.
-- [ ] `src/pages/lab/index.astro` reads the pieces list and renders:
+- [x] `src/pages/lab/index.astro` reads the pieces list and renders:
         - a friendly "coming soon" empty state when the list is empty
         - a card grid (slug, title, summary, date, thumbnail) when non-empty
-- [ ] `bun build` succeeds; `bunx astro check` passes
-- [ ] Built sitemap includes `/lab`
-- [ ] No actual lab piece is added (deferred per PRD)
+- [x] `bun build` succeeds; `bunx astro check` passes
+- [x] Built sitemap includes `/lab`
+- [x] No actual lab piece is added (deferred per PRD)
 
 ## Notes
 
