@@ -1,7 +1,7 @@
 ---
 slice: 5
 title: Home page — "Latest" block
-status: ready
+status: in-progress
 type: afk
 blocked_by: [1, 3]
 parent_prd: site-blog-lab
