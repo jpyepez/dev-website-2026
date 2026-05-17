@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -8,6 +8,22 @@ export async function getStaticPaths() {
     props: { post },
   }));
 }
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 ---
 
-<p>placeholder</p>
+<article>
+  <h1>{post.data.title}</h1>
+  <p>{post.data.description}</p>
+  <time datetime={post.data.pubDate.toISOString()}>
+    {dateFormatter.format(post.data.pubDate)}
+  </time>
+  <Content />
+</article>
