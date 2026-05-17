@@ -1,0 +1,46 @@
+---
+// src/pages/blog/index.astro
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<Base
+  title="Writing — JP Yepez"
+  description="Long-form posts on senior frontend, mobile, and AI tooling."
+>
+  <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
+    <div class="max-w-xl w-full">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+        Writing
+      </h1>
+      <p class="text-base-content/90 leading-relaxed mb-12">
+        Long-form posts on senior frontend, mobile, and AI tooling.
+      </p>
+
+      {
+        posts.length === 0 ? (
+          <p class="text-base-content/70 leading-relaxed">
+            Nothing published yet — first piece lands soon.
+          </p>
+        ) : (
+          <ul class="space-y-4">
+            {posts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="text-base-content/90 hover:text-primary transition-colors"
+                >
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </main>
+</Base>
