@@ -124,8 +124,9 @@ gap before real content exists.
   long, signals "unfinished").
 - **Resolved — home lede tagline (2026-05-18).** Added a small muted
   sub-line under the home H1: "Writing about senior engineering, AI, and
-  the visual work it's making cheap." Anchors both theses and signposts
-  the new Writing and Lab surfaces without inventing a new heading style.
+  the visual work it's bringing within reach." Anchors both theses and
+  signposts the new Writing and Lab surfaces without inventing a new
+  heading style.
 - **Sequencing dependency.** First blog post is deferred roughly four weeks
   per the capture-system decision in `.work/CONTEXT.md`. Ship the empty
   structure now; populate as captures accumulate.
