@@ -1,5 +1,13 @@
 ---
 // src/components/layout/Header.astro
+import { getCollection } from "astro:content";
+import { pieces } from "../../features/lab/pieces";
+
+// Writing and Lab links only appear once their source has content, so an
+// empty section is never advertised in the nav.
+const hasPosts =
+  (await getCollection("blog", ({ data }) => !data.draft)).length > 0;
+const hasPieces = pieces.length > 0;
 ---
 
 <header class="border-b border-base-200">
@@ -11,18 +19,26 @@
       JP Yepez
     </a>
     <nav class="flex gap-6 text-sm uppercase tracking-wide">
-      <a
-        href="/blog"
-        class="text-base-content/80 hover:text-primary transition-colors"
-      >
-        Writing</a
-      >
-      <a
-        href="/lab"
-        class="text-base-content/80 hover:text-primary transition-colors"
-      >
-        Lab</a
-      >
+      {
+        hasPosts && (
+          <a
+            href="/blog"
+            class="text-base-content/80 hover:text-primary transition-colors"
+          >
+            Writing
+          </a>
+        )
+      }
+      {
+        hasPieces && (
+          <a
+            href="/lab"
+            class="text-base-content/80 hover:text-primary transition-colors"
+          >
+            Lab
+          </a>
+        )
+      }
       <a
         href="/uses"
         class="text-base-content/80 hover:text-primary transition-colors"

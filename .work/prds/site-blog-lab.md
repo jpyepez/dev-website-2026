@@ -40,7 +40,8 @@ gap before real content exists.
    so I am not constrained by a shared schema designed for the average case.
 6. As JP, I want both surfaces to display friendly "coming soon" empty states
    until real content exists, so I can ship the structure now without the
-   site feeling abandoned.
+   site feeling abandoned. (Empty states remain for deep links; the nav
+   entries themselves are hidden until content exists — see navigation.)
 
 ## Implementation Decisions
 
@@ -61,7 +62,12 @@ gap before real content exists.
   so a collection schema would either constrain demos or be near-empty.
   Different content shapes deserve different abstractions.
 - **Interface — navigation.** Header gains two entries before the existing
-  Uses and Contact links. Order: Writing, Lab, Uses, Contact.
+  Uses and Contact links. Order: Writing, Lab, Uses, Contact. Each entry is
+  rendered only when its source has content (same rule as the home "Latest"
+  block), so an empty surface is never advertised in the nav. Revised
+  2026-09-17: the original decision showed both links unconditionally and
+  relied on the empty states; post-merge the empty pages read as abandoned
+  rather than "coming soon". Routes still build and stay in the sitemap.
 - **Interface — home page.** A "Latest" block sits below the existing social
   links on the home page: at most one row for the most recent published
   post and one for the most recent lab piece. The block hides entirely
