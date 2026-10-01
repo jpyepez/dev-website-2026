@@ -77,10 +77,15 @@ Committed channels (2026-05-15):
 
 ### Site Framing
 The site is primarily an **engineer's portfolio** (full-stack/frontend, React,
-AI tooling). The [[creative-coding]] side exists as a secondary mode — surfaced
-but not foregrounded on the home page. Decision made 2026-05-14 after the user
-initially called it "an artist's website"; reframed when the homepage copy
-made clear the engineer track is the actual primary.
+AI tooling), and its words stay engineer-first: name, role, theses, writing.
+The home page *looks* like [[creative-coding]]: it opens on an interactive
+visual hero that demonstrates Thesis B instead of describing it. The
+[[creative-coding]] lab itself stays a secondary section.
+
+History: on 2026-05-14 creative coding was "surfaced but not foregrounded" on
+the home page, after the user first called it "an artist's website" and the
+homepage copy showed the engineer track was primary. Revised 2026-10-02 to
+foreground the visual side on the home page; see ADR-0001.
 
 ### Site Goal
 The underlying goal of the site is **reputation-building in the New Zealand
