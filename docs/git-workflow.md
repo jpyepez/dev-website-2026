@@ -1,6 +1,6 @@
 # Git Workflow
 
-Solo personal project. Direct-to-`main` — no PR workflow, no feature branches by default.
+Solo personal project. Every change reaches `main` through a pull request, so each one gets a Vercel preview and a place for review before it ships.
 
 ## Commit format
 
@@ -27,14 +27,25 @@ feat(app): add daisy-ui
 feat(contact): add contact form page
 ```
 
+PR titles use the same format; with squash merges the PR title becomes the commit on `main`.
+
 ## Branching
 
-- `main` is the only long-lived branch.
-- Use short-lived branches (`exp/<name>`) only for spikes or risky refactors that might be discarded. Otherwise commit directly.
+- `main` is the only long-lived branch. Don't commit to it directly.
+- One short-lived branch per piece of work, named by type: `feat/<name>`, `fix/<name>`, `docs/<name>`, `chore/<name>`. Worktree branches (e.g. from dmux) are fine as they are.
+- `exp/<name>` for spikes or risky refactors that might be thrown away. These don't need a PR unless they turn into real work.
+
+## Pull requests
+
+- Open a PR to `main` for every change. Keep it to one coherent change; split unrelated work into separate PRs.
+- The description says what changed and why, plus a short test plan.
+- Visual changes: check the Vercel preview, including on a phone, before merging.
+- Run a review (`/code-review`, or `emil-ui-review` for UI) on anything non-trivial.
+- Squash merge, then delete the branch.
 
 ## What gets committed
 
-- `.work/prds/` and `.work/issues/` — committed (project decisions live with the code).
+- `.work/prds/`, `.work/issues/`, `.work/adr/` and `.work/CONTEXT.md` — committed (project decisions live with the code).
 - `.work/notes/` — gitignored (scratch only).
 - `.env*` — gitignored.
 - `dist/`, `node_modules/`, `.astro/`, `.vercel/`, `.vscode/` — gitignored.

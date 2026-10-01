@@ -44,6 +44,7 @@ const topicOptions = [
         <Input
           name="name"
           label="Name"
+          autocomplete="name"
           required
           placeholder="Your name"
         />
@@ -52,6 +53,7 @@ const topicOptions = [
           name="email"
           label="Email"
           type="email"
+          autocomplete="email"
           required
           placeholder="you@example.com"
         />
@@ -100,9 +102,9 @@ const topicOptions = [
   ] as const;
   const contactSchema = z.object({
     name: z.string().min(1, { error: "Name is required" }),
-    email: z.email({ error: "Invalid email" }),
-    subject: z.enum(topicValues, { error: "Please choose an option" }),
-    message: z.string().min(1, { error: "Message is required" }),
+    email: z.email({ error: "Enter an email address like name@example.com" }),
+    subject: z.enum(topicValues, { error: "Choose what this is about" }),
+    message: z.string().min(1, { error: "Write a message before sending" }),
   });
 
   function clearFieldErrors() {
@@ -217,12 +219,16 @@ const topicOptions = [
         }, 2500);
       } else {
         setResult(
-          data.message ?? "Something went wrong. Please try again.",
+          data.message ??
+            "Your message wasn’t sent. Check your connection and try again.",
           true
         );
       }
     } catch {
-      setResult("Something went wrong. Please try again.", true);
+      setResult(
+        "Your message wasn’t sent. Check your connection and try again.",
+        true
+      );
     } finally {
       if (submitBtn) {
         submitBtn.classList.remove("is-loading");

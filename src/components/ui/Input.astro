@@ -14,6 +14,7 @@ interface Props {
   type?: InputType;
   required?: boolean;
   placeholder?: string;
+  autocomplete?: string;
   error?: string;
 }
 
@@ -23,6 +24,7 @@ const {
   type = "text",
   required = false,
   placeholder,
+  autocomplete,
   error,
 } = Astro.props as Props;
 ---
@@ -38,9 +40,10 @@ const {
     type={type}
     required={required}
     placeholder={placeholder}
-    class="input input-bordered w-full bg-base-200 text-base-content border-base-300"
+    autocomplete={autocomplete}
+    class="input input-bordered w-full text-base md:text-sm bg-base-200 text-base-content border-base-300"
     aria-invalid={error ? "true" : undefined}
-    aria-describedby={error ? `${name}-error` : undefined}
+    aria-describedby={`${name}-error`}
   />
   <p
     id={`${name}-error`}

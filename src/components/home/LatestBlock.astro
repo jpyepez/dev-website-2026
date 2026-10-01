@@ -12,6 +12,26 @@ const latestPiece = [...pieces].sort(
   (a, b) => b.date.getTime() - a.date.getTime()
 )[0];
 
+const entries = [
+  latestPost && {
+    kind: "Writing",
+    title: latestPost.data.title,
+    href: `/blog/${latestPost.id}`,
+    date: latestPost.data.pubDate,
+  },
+  latestPiece && {
+    kind: "Lab",
+    title: latestPiece.title,
+    href: `/lab/${latestPiece.slug}`,
+    date: latestPiece.date,
+  },
+].filter((entry) => Boolean(entry)) as {
+  kind: string;
+  title: string;
+  href: string;
+  date: Date;
+}[];
+
 const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
   day: "numeric",
   month: "long",
@@ -21,39 +41,42 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
 
 {
   (latestPost || latestPiece) && (
-    <section class="mt-12 space-y-6">
-      {latestPost && (
-        <a href={`/blog/${latestPost.id}`} class="group block">
-          <div class="text-xs uppercase tracking-wide text-base-content/60 mb-1">
-            Writing
-          </div>
-          <h2 class="text-lg font-semibold tracking-tight text-base-content/90 group-hover:text-primary transition-colors">
-            {latestPost.data.title}
-          </h2>
-          <time
-            datetime={latestPost.data.pubDate.toISOString()}
-            class="text-sm text-base-content/60"
-          >
-            {dateFormatter.format(latestPost.data.pubDate)}
-          </time>
-        </a>
-      )}
-      {latestPiece && (
-        <a href={`/lab/${latestPiece.slug}`} class="group block">
-          <div class="text-xs uppercase tracking-wide text-base-content/60 mb-1">
-            Lab
-          </div>
-          <h2 class="text-lg font-semibold tracking-tight text-base-content/90 group-hover:text-primary transition-colors">
-            {latestPiece.title}
-          </h2>
-          <time
-            datetime={latestPiece.date.toISOString()}
-            class="text-sm text-base-content/60"
-          >
-            {dateFormatter.format(latestPiece.date)}
-          </time>
-        </a>
-      )}
+    <section
+      class="max-w-[1360px] mx-auto px-4 md:px-10 pb-28"
+      aria-labelledby="latest-heading"
+    >
+      <h2
+        id="latest-heading"
+        class="font-mono text-[11px] text-base-content/70 pb-3 border-b border-base-300"
+      >
+        Latest
+      </h2>
+      <ul>
+        {entries.map((entry, i) => (
+          <li>
+            <a
+              href={entry.href}
+              class="group grid grid-cols-[auto_1fr] md:grid-cols-[80px_80px_1fr_auto] gap-x-4 gap-y-2 items-baseline py-5 border-b border-base-300"
+            >
+              <span class="font-mono text-[11px] text-primary">
+                Fig. {String(i + 2).padStart(2, "0")}
+              </span>
+              <span class="font-mono text-[11px] text-base-content/70">
+                {entry.kind}
+              </span>
+              <span class="col-span-2 md:col-span-1 text-xl leading-snug font-medium tracking-[-0.01em] text-balance group-hover:text-primary transition-colors">
+                {entry.title}
+              </span>
+              <time
+                datetime={entry.date.toISOString()}
+                class="text-sm text-base-content/70 whitespace-nowrap"
+              >
+                {dateFormatter.format(entry.date)}
+              </time>
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
