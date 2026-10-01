@@ -42,5 +42,6 @@ Asymmetry rationale: blog content is uniform, so a collection earns its abstract
 ## Conventions
 
 - Per-page metadata via `Base.astro` props (`title`, `description`); OG and Twitter tags fall back to those.
+- `Base.astro`'s `column` prop (`home`, `prose` default, `gallery`) sets the header width to match the page's content column, so their edges line up. Pass it when a page uses a column other than `max-w-xl`.
 - No client-side router; full page loads between routes (Astro default).
 - No global state. Components are mostly server-rendered with small `<script>` islands where interactivity is needed (e.g. contact form, home terrain canvas).

@@ -3,11 +3,21 @@
 import { getCollection } from "astro:content";
 import { pieces } from "../../features/lab/pieces";
 
+export type Column = "home" | "prose" | "gallery";
+
 interface Props {
-  wide?: boolean;
+  /** The page's content column, so the header's edges line up with it. */
+  column?: Column;
 }
 
-const { wide = false } = Astro.props;
+const { column = "prose" } = Astro.props;
+
+// Home pads inside its 1360px box; the other pages centre a column inside px-4 padding.
+const columnClass: Record<Column, string> = {
+  home: "max-w-[1360px] px-4 md:px-10",
+  prose: "max-w-xl",
+  gallery: "max-w-3xl",
+};
 
 // On the home page the h1 already says the name, so the wordmark would just repeat it
 // directly above itself (and link to the page you're on).
@@ -27,12 +37,12 @@ const links = [
 ].filter((link): link is { href: string; label: string } => Boolean(link));
 ---
 
-<header>
+<header class:list={[column !== "home" && "px-4"]}>
   <div
     class:list={[
-      "mx-auto px-4 md:px-10 py-3 flex items-center gap-4",
+      "mx-auto py-3 flex items-center gap-4",
       isHome ? "justify-end" : "justify-between",
-      wide ? "max-w-[1360px]" : "max-w-4xl",
+      columnClass[column],
     ]}
   >
     {
