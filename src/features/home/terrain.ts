@@ -150,35 +150,61 @@ export function mountTerrain(canvas: HTMLCanvasElement): () => void {
   }
   const wake = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
-  function local(e: PointerEvent) {
+  function local(e: MouseEvent) {
     const box = canvas.getBoundingClientRect();
     return { x: e.clientX - box.left, y: e.clientY - box.top };
   }
-  function placeHill(e: PointerEvent) {
-    const p = local(e);
+  function raiseHill(p: { x: number; y: number }) {
     if (target.a === 0) { hill.x = p.x; hill.y = p.y; }
     target.x = p.x; target.y = p.y; target.a = 1;
     if (reduced) { hill.x = p.x; hill.y = p.y; hill.a = 1; dirty = true; }
     wake();
   }
-  const onMove = (e: PointerEvent) => { if (e.pointerType !== "touch") placeHill(e); };
-  const onLeave = (e: PointerEvent) => {
-    if (e.pointerType === "touch") return;
+  function lowerHill() {
     target.a = 0;
     if (reduced) { hill.a = 0; dirty = true; }
     wake();
+  }
+
+  // Touch has no hover, so pressing and holding stands in for it: the hill rises under
+  // the finger and follows sideways drags. A short delay keeps a scroll that starts on
+  // the figure (vertical drags still scroll, then fire pointercancel) from flashing a hill.
+  let touchId: number | null = null;
+  let holdTimer = 0;
+  let touchPoint = { x: 0, y: 0 };
+  const HOLD_DELAY = 120;
+
+  const onDown = (e: PointerEvent) => {
+    if (e.pointerType !== "touch") return;
+    touchId = e.pointerId;
+    touchPoint = local(e);
+    holdTimer = window.setTimeout(() => { if (touchId !== null) raiseHill(touchPoint); }, HOLD_DELAY);
   };
+  const onMove = (e: PointerEvent) => {
+    if (e.pointerType !== "touch") return raiseHill(local(e));
+    if (e.pointerId !== touchId) return;
+    touchPoint = local(e);
+    if (target.a) raiseHill(touchPoint);
+  };
+  const onTouchEnd = (e: PointerEvent) => {
+    if (e.pointerType !== "touch" || e.pointerId !== touchId) return;
+    touchId = null;
+    clearTimeout(holdTimer);
+    if (target.a) lowerHill();
+  };
+  const onLeave = (e: PointerEvent) => { if (e.pointerType !== "touch") lowerHill(); };
   // `click` (not pointerdown) so a scroll that starts on the figure doesn't count as a tap.
-  const onTap = (e: PointerEvent) => {
-    if (e.pointerType === "touch") placeHill(e);
+  const onTap = (e: MouseEvent) => {
     if (reduced) return;
-    const p = local(e);
-    ripples.push({ ...p, born: performance.now() });
+    ripples.push({ ...local(e), born: performance.now() });
     if (ripples.length > MAX_RIPPLES) ripples.shift();
     wake();
   };
 
+  surface.addEventListener("pointerdown", onDown);
   surface.addEventListener("pointermove", onMove);
+  surface.addEventListener("pointerup", onTouchEnd);
+  surface.addEventListener("pointercancel", onTouchEnd);
   surface.addEventListener("pointerleave", onLeave);
   surface.addEventListener("click", onTap);
   const ro = new ResizeObserver(resize);
@@ -193,8 +219,12 @@ export function mountTerrain(canvas: HTMLCanvasElement): () => void {
     cancelAnimationFrame(raf);
     ro.disconnect();
     io.disconnect();
+    clearTimeout(holdTimer);
     document.removeEventListener("visibilitychange", wake);
+    surface.removeEventListener("pointerdown", onDown);
     surface.removeEventListener("pointermove", onMove);
+    surface.removeEventListener("pointerup", onTouchEnd);
+    surface.removeEventListener("pointercancel", onTouchEnd);
     surface.removeEventListener("pointerleave", onLeave);
     surface.removeEventListener("click", onTap);
   };
