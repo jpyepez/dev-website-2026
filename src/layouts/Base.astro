@@ -2,6 +2,8 @@
 // src/layouts/Base.astro
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
+import geistFont from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import geistMonoFont from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url";
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import ToastContainer from "../components/layout/ToastContainer.astro";
@@ -19,7 +21,7 @@ const {
   wide = false,
 } = Astro.props;
 
-const siteUrl = "https://jpyepez.com";
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -28,12 +30,16 @@ const siteUrl = "https://jpyepez.com";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#04111c" />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="preload" href={geistFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistMonoFont} as="font" type="font/woff2" crossorigin />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={pageUrl} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -44,7 +50,7 @@ const siteUrl = "https://jpyepez.com";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <meta name="apple-mobile-web-app-title" content="JP Yepez" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
   </head>
