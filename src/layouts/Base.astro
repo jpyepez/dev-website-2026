@@ -1,6 +1,7 @@
 ---
 // src/layouts/Base.astro
-import "@fontsource-variable/inter";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import ToastContainer from "../components/layout/ToastContainer.astro";
@@ -8,11 +9,14 @@ import ToastContainer from "../components/layout/ToastContainer.astro";
 interface Props {
   title: string;
   description?: string;
+  /** Widens the header to match full-width layouts like the home page. */
+  wide?: boolean;
 }
 
 const {
   title,
   description = "Full-stack engineer and frontend specialist. TypeScript, React, infrastructure, and testing.",
+  wide = false,
 } = Astro.props;
 
 const siteUrl = "https://jpyepez.com";
@@ -45,7 +49,7 @@ const siteUrl = "https://jpyepez.com";
     <title>{title}</title>
   </head>
   <body class="font-sans bg-base-100 text-base-content antialiased">
-    <Header />
+    <Header wide={wide} />
     <slot />
     <ToastContainer />
   </body>

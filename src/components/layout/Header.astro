@@ -3,54 +3,51 @@
 import { getCollection } from "astro:content";
 import { pieces } from "../../features/lab/pieces";
 
+interface Props {
+  wide?: boolean;
+}
+
+const { wide = false } = Astro.props;
+
 // Writing and Lab links only appear once their source has content, so an
 // empty section is never advertised in the nav.
 const hasPosts =
   (await getCollection("blog", ({ data }) => !data.draft)).length > 0;
 const hasPieces = pieces.length > 0;
+
+const links = [
+  hasPosts && { href: "/blog", label: "Writing" },
+  hasPieces && { href: "/lab", label: "Lab" },
+  { href: "/uses", label: "Uses" },
+  { href: "/contact", label: "Contact" },
+].filter((link): link is { href: string; label: string } => Boolean(link));
 ---
 
-<header class="border-b border-base-200">
-  <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+<header>
+  <div
+    class:list={[
+      "mx-auto px-4 md:px-10 py-3 flex justify-between items-center gap-4",
+      wide ? "max-w-[1360px]" : "max-w-4xl",
+    ]}
+  >
     <a
       href="/"
-      class="text-base-content font-semibold hover:opacity-90 transition-opacity"
+      class="inline-flex min-h-11 items-center font-mono text-[13px] font-medium text-base-content hover:text-primary transition-colors"
     >
       JP Yepez
     </a>
-    <nav class="flex gap-6 text-sm uppercase tracking-wide">
+    <nav class="flex gap-5 md:gap-6 text-[15px]" aria-label="Primary">
       {
-        hasPosts && (
+        links.map((link) => (
           <a
-            href="/blog"
-            class="text-base-content/80 hover:text-primary transition-colors"
+            href={link.href}
+            class="inline-flex min-h-11 items-center text-base-content/70 hover:text-primary transition-colors"
+            aria-current={Astro.url.pathname.startsWith(link.href) ? "page" : undefined}
           >
-            Writing
+            {link.label}
           </a>
-        )
+        ))
       }
-      {
-        hasPieces && (
-          <a
-            href="/lab"
-            class="text-base-content/80 hover:text-primary transition-colors"
-          >
-            Lab
-          </a>
-        )
-      }
-      <a
-        href="/uses"
-        class="text-base-content/80 hover:text-primary transition-colors"
-      >
-        Uses</a
-      >
-      <a
-        href="/contact"
-        class="text-base-content/80 hover:text-primary transition-colors"
-      >
-        Contact</a
-      >
     </nav>
   </div>
 </header>

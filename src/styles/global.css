@@ -6,13 +6,39 @@
   name: "night";
   default: true;
   color-scheme: dark;
-  /* Dark page background and light text (match gray-950 / gray-100) */
-  --color-base-100: oklch(0.13 0.015 264);
-  --color-base-200: oklch(0.18 0.018 264);
-  --color-base-300: oklch(0.24 0.02 264);
-  --color-base-content: oklch(0.97 0.004 264);
+  /* Ink-blue surfaces, see docs/home-design.md */
+  --color-base-100: oklch(0.17 0.03 245);
+  --color-base-200: oklch(0.135 0.03 245);
+  --color-base-300: oklch(0.3 0.035 245);
+  --color-base-content: oklch(0.95 0.01 245);
+  /* Teal accent */
+  --color-primary: oklch(0.86 0.13 175);
+  --color-primary-content: oklch(0.17 0.03 245);
 }
 
 @theme {
-  --font-sans: "Inter Variable", "Inter", sans-serif;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
+}
+
+html {
+  font-synthesis: none;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
