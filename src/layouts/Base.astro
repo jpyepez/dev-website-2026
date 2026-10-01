@@ -13,12 +13,15 @@ interface Props {
   description?: string;
   /** The page's content column; the header lines up with it. */
   column?: Column;
+  /** Keep the page out of search results, e.g. a section that has no content yet. */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "Full-stack engineer and frontend specialist. TypeScript, React, infrastructure, and testing.",
   column = "prose",
+  noindex = false,
 } = Astro.props;
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -35,6 +38,13 @@ const ogImageAlt =
     <meta name="description" content={description} />
     <meta name="theme-color" content="#04111c" />
     <link rel="canonical" href={pageUrl} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="JP Yepez — Writing"
+      href={new URL("/blog/rss.xml", Astro.site)}
+    />
     <link rel="preload" href={geistFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={geistMonoFont} as="font" type="font/woff2" crossorigin />
 
