@@ -9,5 +9,5 @@ On 2026-05-14 we decided creative coding would be surfaced but not foregrounded 
 
 ## Consequences
 
-- Touch devices get their own interaction (a tap raises the terrain and sends a ripple), since a pointer hill alone would leave the figure static on phones.
+- Touch devices get their own interaction (press and hold raises the terrain under the finger; a tap sends a ripple), since a pointer hill alone would leave the figure static on phones.
 - The hero must stay credible as engineering: no autoplaying motion, reduced-motion support, and no hit to load performance. A slow or janky hero would contradict the thesis it is meant to prove.

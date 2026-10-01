@@ -31,7 +31,8 @@ A split layout. The left column has the name, role and tagline, then the bio and
 - Drift moves through time (the z axis of 3D noise), so the terrain changes shape in place instead of sliding. The z blend is variance-corrected so contrast doesn't dip between time steps.
 - Drift pauses when the figure is off-screen or the tab is hidden, and nothing redraws when nothing changes.
 - Reduced motion: no drift and no ripples. The hill follows the pointer without easing.
-- Touch: a tap raises the hill there and sends a ripple.
+- Touch: press and hold raises the hill under the finger and it follows sideways drags; lifting lowers it. A 120ms hold delay stops a scroll that starts on the figure from flashing a hill. A quick tap sends a ripple.
+- The header drops its "JP Yepez" wordmark on the home page, where the h1 already says it; the h1's cap height lines up with the figure's top edge.
 - Drawing copies glyphs from a pre-rendered atlas. Measured on an M-series Mac at 8px glyphs (~7,700 cells): 32 ms/frame with per-glyph `fillText`, 3.8 ms/frame with the atlas while drifting.
 
 ## Rejected
