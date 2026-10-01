@@ -9,6 +9,10 @@ interface Props {
 
 const { wide = false } = Astro.props;
 
+// On the home page the h1 already says the name, so the wordmark would just repeat it
+// directly above itself (and link to the page you're on).
+const isHome = Astro.url.pathname === "/";
+
 // Writing and Lab links only appear once their source has content, so an
 // empty section is never advertised in the nav.
 const hasPosts =
@@ -26,16 +30,21 @@ const links = [
 <header>
   <div
     class:list={[
-      "mx-auto px-4 md:px-10 py-3 flex justify-between items-center gap-4",
+      "mx-auto px-4 md:px-10 py-3 flex items-center gap-4",
+      isHome ? "justify-end" : "justify-between",
       wide ? "max-w-[1360px]" : "max-w-4xl",
     ]}
   >
-    <a
-      href="/"
-      class="inline-flex min-h-11 items-center font-mono text-[13px] font-medium text-base-content hover:text-primary transition-colors"
-    >
-      JP Yepez
-    </a>
+    {
+      !isHome && (
+        <a
+          href="/"
+          class="inline-flex min-h-11 items-center font-mono text-[13px] font-medium text-base-content hover:text-primary transition-colors"
+        >
+          JP Yepez
+        </a>
+      )
+    }
     <nav class="flex gap-5 md:gap-6 text-[15px]" aria-label="Primary">
       {
         links.map((link) => (
