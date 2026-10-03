@@ -1,17 +1,35 @@
 ---
-interface Props {
-  label: string;
-  values: string[];
-}
-const { label, values } = Astro.props;
-import Badge from "../../components/ui/Badge.astro";
+// src/features/uses/UsesDefinitionItem.astro
+import type { Tool } from "./tools";
+
+type Props = Tool;
+const { label, values, note } = Astro.props;
 ---
 
-<div class="flex flex-col sm:flex-row sm:gap-4 sm:items-start">
-  <dt class="text-base-content/80 sm:w-32 shrink-0 pt-1.5 sm:pt-0">{label}</dt>
-  <dd class="flex flex-wrap gap-2">
-    {values.map((value) => (
-      <Badge>{value}</Badge>
-    ))}
+<div class="grid gap-y-1 md:grid-cols-[136px_1fr] md:gap-x-4 py-5 border-b border-base-300">
+  <dt class="font-mono text-[11px] text-base-content/70 md:pt-1.5">{label}</dt>
+  <dd class="grid gap-1.5">
+    <p class="text-xl leading-snug font-medium tracking-[-0.01em] text-balance">
+      {
+        // Each separator is bound to the value after it, so a line never ends on a bare slash.
+        values.map((value, i) => (
+          <>
+            {i > 0 && " "}
+            <span class="whitespace-nowrap">
+              {i > 0 && (
+                <>
+                  <span class="sr-only">, </span>
+                  <span class="text-base-content/30 font-normal" aria-hidden="true">/ </span>
+                </>
+              )}
+              {value}
+            </span>
+          </>
+        ))
+      }
+    </p>
+    <p class="text-base leading-relaxed text-base-content/70 text-pretty max-w-[34em]">
+      {note}
+    </p>
   </dd>
 </div>
