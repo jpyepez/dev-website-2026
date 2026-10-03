@@ -7,7 +7,7 @@ Astro 5 static site, server-rendered at build time, deployed to Vercel.
 - `src/pages/` — file-based routes. One `.astro` file per page.
 - `src/layouts/` — page shells. Currently only `Base.astro` (HTML, meta, fonts, daisyUI theme).
 - `src/components/` — generic, reusable pieces.
-  - `ui/` — primitives (Button, Input, Select, Textarea, Badge, SocialLinks, SocialLink).
+  - `ui/` — primitives (Button, Input, Select, Textarea, SocialLinks, SocialLink).
   - `layout/` — chrome (Header, ToastContainer).
 - `src/features/` — feature-folder pattern for grouped, page-specific components (e.g. `features/uses/UsesSection.astro`, `features/home/` for the home terrain figure). Add a folder per feature once it has 2+ files.
 - `src/styles/global.css` — Tailwind 4 + daisyUI imports, global resets.
