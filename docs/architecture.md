@@ -25,7 +25,7 @@ Asymmetry rationale: blog content is uniform, so a collection earns its abstract
 ## Styling
 
 - **Tailwind 4** via `@tailwindcss/vite` plugin (configured in `astro.config.mjs`, no separate config file).
-- **daisyUI 5** for component classes. Theme is `night` (dark), set via `data-theme="night"` on `<html>`, with its colours overridden in `global.css`: ink-blue base, teal `primary`. Values and rationale in [home-design.md](./home-design.md).
+- **daisyUI 5** for component classes. Theme is `night` (dark), set via `data-theme="night"` on `<html>`, with its colours overridden in `global.css`: ink-blue base, teal `primary`. Values and rationale in [home-design.md](./home-design.md); the uses page layout is in [uses-design.md](./uses-design.md).
 - **Geist Variable** and **Geist Mono Variable** via `@fontsource-variable/geist` and `@fontsource-variable/geist-mono` (`font-sans`, `font-mono`).
 - Class style: utility-first; daisyUI semantic classes (`bg-base-100`, `text-base-content`, `text-primary`) preferred over hardcoded colours so theme swaps don't require sweeps.
 
