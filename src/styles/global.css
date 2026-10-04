@@ -27,6 +27,8 @@
 
 html {
   font-synthesis: none;
+  /* Reserve the scrollbar's space so a page that gets shorter (e.g. the contact form swapping to its thank-you panel) doesn't shift sideways. */
+  scrollbar-gutter: stable;
 }
 
 ::selection {
@@ -45,6 +47,11 @@ textarea {
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+/* Elements focused by script, not by the visitor (e.g. the contact form's thank-you heading), get no ring. */
+[tabindex="-1"]:focus-visible {
+  outline: none;
 }
 
 /* Long-form text (posts, lab write-ups) on the house palette, not the plugin's greys.

@@ -1,0 +1,227 @@
+---
+// src/features/contact/ContactForm.astro
+// Posts to Web3Forms. With JavaScript: Zod validation, inline errors, and a thank-you panel in place
+// of the form. Without it, the browser validates and Web3Forms shows its own confirmation page.
+import Input from "../../components/ui/Input.astro";
+import Textarea from "../../components/ui/Textarea.astro";
+import Button from "../../components/ui/Button.astro";
+import { fieldErrorClass, fieldFrameClass, fieldLabelClass } from "../../components/ui/field";
+import { topics } from "./topics";
+
+const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY as string;
+---
+
+<div>
+  <form
+    id="contact-form"
+    class="grid gap-y-3 max-w-[40rem]"
+    action="https://api.web3forms.com/submit"
+    method="post"
+  >
+    <input type="hidden" name="access_key" value={accessKey} />
+    <input type="checkbox" name="botcheck" class="hidden" aria-hidden="true" tabindex="-1" />
+
+    <div class="grid gap-x-4 md:grid-cols-2">
+      <Input name="name" label="Name" autocomplete="name" required />
+      <Input name="email" label="Email" type="email" autocomplete="email" spellcheck={false} required />
+    </div>
+
+    <fieldset>
+      <legend class={fieldLabelClass}>What’s this about?</legend>
+      <div class="flex flex-wrap gap-2">
+        {
+          topics.map((topic, i) => (
+            <label
+              class={`${fieldFrameClass} inline-flex items-center min-h-11 px-4 text-sm text-base-content/70 cursor-pointer select-none hover:text-base-content has-[:checked]:border-primary has-[:checked]:text-base-content has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-primary has-[:focus-visible]:outline-offset-3`}
+            >
+              <input
+                type="radio"
+                name="subject"
+                value={topic.value}
+                required={i === 0}
+                aria-describedby="subject-error"
+                class="peer sr-only"
+              />
+              <span class="mr-2 size-1.5 rounded-full bg-base-content/25 peer-checked:bg-primary transition-colors" aria-hidden="true" />
+              {topic.label}
+            </label>
+          ))
+        }
+      </div>
+      <p id="subject-error" class={fieldErrorClass}></p>
+    </fieldset>
+
+    <Textarea
+      name="message"
+      label="Message"
+      required
+      rows={7}
+      placeholder="A bit about what you’re building and where it’s at."
+    />
+
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <Button type="submit" id="contact-submit">Send message</Button>
+      {/* Filled in by the script with the right modifier key; hidden on touch screens. */}
+      <p id="contact-shortcut" class="font-mono text-label text-base-content/60 pointer-coarse:hidden"></p>
+    </div>
+    <p id="contact-result" class="min-h-5 text-sm text-error" role="status" aria-live="polite"></p>
+  </form>
+
+  <div id="contact-sent" hidden class="max-w-[40rem] border-t border-base-300 pt-6">
+    <p class="font-mono text-label text-primary">Sent</p>
+    <h2
+      tabindex="-1"
+      class="mt-4 text-[clamp(22px,2vw,28px)] leading-tight tracking-[-0.015em] font-medium text-balance [overflow-wrap:anywhere]"
+    >
+      Thanks, <span data-echo="name"></span>. Your message is on its way.
+    </h2>
+    <p class="mt-4 text-base leading-relaxed text-base-content/70 text-pretty [overflow-wrap:anywhere]">
+      I’ll reply to <span class="text-base-content" data-echo="email"></span>.
+    </p>
+    <button
+      type="button"
+      id="contact-again"
+      class="mt-8 inline-flex min-h-11 items-center font-mono text-label border-b border-base-300 hover:text-primary hover:border-primary transition-colors"
+    >
+      Send another message
+    </button>
+  </div>
+</div>
+
+<script>
+  import { z } from "zod";
+  import { topicValues } from "./topics";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("contact-submit") as HTMLButtonElement;
+  const resultEl = document.getElementById("contact-result") as HTMLElement;
+  const sentPanel = document.getElementById("contact-sent") as HTMLElement;
+  const shortcutEl = document.getElementById("contact-shortcut") as HTMLElement;
+
+  // The script validates instead of the browser, so errors appear inline in the site's style.
+  form.noValidate = true;
+
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+  shortcutEl.textContent = `${isMac ? "⌘" : "Ctrl"} + Enter to send`;
+
+  const fields = ["name", "email", "subject", "message"] as const;
+  type Field = (typeof fields)[number];
+
+  const contactSchema = z.object({
+    name: z.string().trim().min(1, { error: "Add your name so I know who’s writing" }),
+    email: z.email({ error: "Enter an email address like name@example.com" }),
+    subject: z.enum(topicValues, { error: "Choose what this is about" }),
+    message: z.string().trim().min(1, { error: "Write a message before sending" }),
+  });
+
+  function readValues() {
+    const data = new FormData(form);
+    return {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? "").trim(),
+      subject: data.get("subject") || undefined,
+      message: String(data.get("message") ?? ""),
+    };
+  }
+
+  function setFieldError(name: Field, message: string) {
+    form
+      .querySelectorAll(`[name="${name}"]`)
+      .forEach((el) => el.setAttribute("aria-invalid", message ? "true" : "false"));
+    const errorEl = document.getElementById(`${name}-error`);
+    if (errorEl) errorEl.textContent = message;
+  }
+
+  /** Validates every field, or just `only`, and returns the fields that failed in form order. */
+  function validate(only?: Field): Field[] {
+    const parsed = contactSchema.safeParse(readValues());
+    const errors: Partial<Record<Field, string>> = {};
+    if (!parsed.success) {
+      for (const issue of parsed.error.issues) {
+        const path = issue.path[0] as Field;
+        errors[path] ??= issue.message;
+      }
+    }
+    for (const field of only ? [only] : fields) setFieldError(field, errors[field] ?? "");
+    return fields.filter((field) => errors[field]);
+  }
+
+  function setSending(sending: boolean) {
+    // Hold the width so the shorter "Sending…" label doesn't shift the shortcut hint.
+    submitBtn.style.minWidth = sending ? `${submitBtn.offsetWidth}px` : "";
+    submitBtn.disabled = sending;
+    submitBtn.textContent = sending ? "Sending…" : "Send message";
+  }
+
+  // Errors show on submit; once a field has one, it re-checks as the visitor fixes it.
+  const recheck = (e: Event) => {
+    const el = e.target as HTMLInputElement;
+    if (el.getAttribute("aria-invalid") === "true") validate(el.name as Field);
+  };
+  form.addEventListener("input", recheck);
+  form.addEventListener("change", recheck);
+
+  form.addEventListener("keydown", (e) => {
+    if (e.target instanceof HTMLTextAreaElement && e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (submitBtn.disabled) return;
+    resultEl.textContent = "";
+
+    const invalid = validate();
+    if (invalid.length > 0) {
+      form.querySelector<HTMLElement>(`[name="${invalid[0]}"]`)?.focus();
+      return;
+    }
+
+    const formData = new FormData(form);
+    if (!formData.get("access_key")) {
+      resultEl.textContent = "The form isn’t set up yet. Try again later.";
+      return;
+    }
+
+    const values = readValues();
+    setSending(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: formData.get("access_key"),
+          ...values,
+          botcheck: formData.get("botcheck") === "on",
+        }),
+      });
+      const data = (await response.json()) as { success?: boolean; message?: string };
+
+      if (response.ok && data.success) {
+        sentPanel.querySelectorAll<HTMLElement>("[data-echo]").forEach((el) => {
+          el.textContent = values[el.dataset.echo as "name" | "email"].trim();
+        });
+        form.hidden = true;
+        sentPanel.hidden = false;
+        sentPanel.querySelector<HTMLElement>("h2")?.focus();
+      } else {
+        resultEl.textContent =
+          data.message ?? "Your message wasn’t sent. Try again; what you wrote is still here.";
+      }
+    } catch {
+      resultEl.textContent =
+        "Your message wasn’t sent. Check your connection and try again; what you wrote is still here.";
+    } finally {
+      setSending(false);
+    }
+  });
+
+  document.getElementById("contact-again")?.addEventListener("click", () => {
+    form.reset();
+    sentPanel.hidden = true;
+    form.hidden = false;
+    form.querySelector<HTMLElement>('[name="name"]')?.focus();
+  });
+</script>
