@@ -15,12 +15,12 @@ The notes are the point. A uses page gets read to learn how someone works, not t
 | Columns | `lg:grid-cols-[5fr_7fr]`, gap `clamp(32px,5vw,72px)`, inside the 1360px home container |
 | Left column | `lg:sticky lg:top-6`; index hidden below `lg` |
 | Intro | `clamp(22px,2vw,28px)`, medium, balanced, max 22em |
-| Section heading | Mono 11px, teal two-digit number, hairline below |
-| Row | Mono 11px label (136px column from `md`), tools at `text-xl` medium, note at `text-base` 70% opacity, max 34em |
+| Section heading | Mono 12px (`text-label`), teal two-digit number, hairline below |
+| Row | Mono 12px (`text-label`) label (136px column from `md`), tools at `text-xl` medium, note at `text-base` 70% opacity, max 34em |
 | Multiple tools | Joined with a 30% opacity ` / `; screen readers hear commas |
 | Tool links | Every tool name links to its official site; 25% opacity underline at a 5px offset, teal on hover |
-| Updated date | Mono 11px under the intro, from `updated` in `tools.ts` |
-| Index | Mono 11px rows, min 40px tall, tool count on the right; the section in view is marked `aria-current="location"` |
+| Updated date | Mono 12px (`text-label`) under the intro, from `updated` in `tools.ts` |
+| Index | Mono 12px (`text-label`) rows, min 40px tall, tool count on the right; the section in view is marked `aria-current="location"` |
 
 On phones the index is hidden and every row stacks label, tools, then note.
 

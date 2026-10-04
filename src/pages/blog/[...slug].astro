@@ -25,29 +25,31 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
   description={post.data.description}
 >
   <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
-    <article class="max-w-xl w-full prose prose-invert">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">
-        {post.data.title}
-      </h1>
-      <p class="text-base-content/90 leading-relaxed mb-2">
-        {post.data.description}
-      </p>
-      <p class="text-sm text-base-content/60 mb-8">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {dateFormatter.format(post.data.pubDate)}
-        </time>
-        {
-          post.data.updatedDate && (
-            <>
-              {" · Updated "}
-              <time datetime={post.data.updatedDate.toISOString()}>
-                {dateFormatter.format(post.data.updatedDate)}
-              </time>
-            </>
-          )
-        }
-      </p>
-      <div class="text-base-content/90 leading-relaxed space-y-4">
+    <article class="max-w-xl w-full">
+      <header class="mb-10">
+        <h1 class="text-4xl md:text-5xl leading-[1.05] font-semibold tracking-[-0.035em] text-balance mb-4">
+          {post.data.title}
+        </h1>
+        <p class="leading-relaxed text-pretty mb-2">
+          {post.data.description}
+        </p>
+        <p class="text-sm text-base-content/70">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {dateFormatter.format(post.data.pubDate)}
+          </time>
+          {
+            post.data.updatedDate && (
+              <>
+                {" · Updated "}
+                <time datetime={post.data.updatedDate.toISOString()}>
+                  {dateFormatter.format(post.data.updatedDate)}
+                </time>
+              </>
+            )
+          }
+        </p>
+      </header>
+      <div class="prose max-w-none">
         <Content />
       </div>
     </article>

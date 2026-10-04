@@ -21,10 +21,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
 >
   <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
     <div class="max-w-xl w-full">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+      <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em] mb-4">
         Writing
       </h1>
-      <p class="text-base-content/90 leading-relaxed mb-12">
+      <p class="leading-relaxed mb-12">
         Long-form posts on senior frontend, mobile, and AI tooling.
       </p>
 
@@ -38,12 +38,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
             {posts.map((post) => (
               <li>
                 <a href={`/blog/${post.id}`} class="group block">
-                  <h2 class="text-xl font-semibold tracking-tight text-base-content/90 group-hover:text-primary transition-colors">
+                  <h2 class="text-xl font-semibold tracking-[-0.01em] group-hover:text-primary transition-colors">
                     {post.data.title}
                   </h2>
                   <time
                     datetime={post.data.pubDate.toISOString()}
-                    class="text-sm text-base-content/60"
+                    class="text-sm text-base-content/70"
                   >
                     {dateFormatter.format(post.data.pubDate)}
                   </time>
