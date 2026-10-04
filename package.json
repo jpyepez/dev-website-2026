@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "og": "bun scripts/og.ts",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -23,5 +24,8 @@
     "tailwindcss": "^4.2.1",
     "typescript": "^6.0.3",
     "zod": "^4"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
   }
 }

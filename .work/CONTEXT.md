@@ -76,7 +76,7 @@ Committed channels (2026-05-15):
 - *Explicitly not committed:* NZ Slacks/Discords (too time-sinky for now).
 
 ### Site Framing
-The site is primarily an **engineer's portfolio** (full-stack/frontend, React,
+The site is primarily an **engineer's portfolio** (product engineering, React,
 AI tooling), and its words stay engineer-first: name, role, theses, writing.
 The home page *looks* like [[creative-coding]]: it opens on an interactive
 visual hero that demonstrates Thesis B instead of describing it. The
