@@ -31,9 +31,11 @@ const topicOptions = [
       <form
         id="contact-form"
         class="space-y-4"
-        data-access-key={accessKey}
+        action="https://api.web3forms.com/submit"
         method="post"
       >
+        {/* Without JavaScript the form posts straight to Web3Forms, which shows its own confirmation page. */}
+        <input type="hidden" name="access_key" value={accessKey} />
         <input
           type="checkbox"
           name="botcheck"
@@ -135,30 +137,18 @@ const topicOptions = [
     resultEl.className = `text-sm ${isError ? "text-error" : "text-base-content/70"}`;
   }
 
-  function showSuccessToast(message: string) {
-    const container = document.getElementById("toast-container");
-    if (!container) return;
-    const alert = document.createElement("div");
-    alert.className = "alert alert-success";
-    const span = document.createElement("span");
-    span.textContent = message;
-    alert.appendChild(span);
-    container.appendChild(alert);
-    setTimeout(() => alert.remove(), 5000);
-  }
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearFieldErrors();
     setResult("");
 
-    const accessKey = form.dataset.accessKey;
+    const formData = new FormData(form);
+    const accessKey = formData.get("access_key");
     if (!accessKey) {
       setResult("Form is not configured. Please try again later.", true);
       return;
     }
 
-    const formData = new FormData(form);
     const raw: Record<string, unknown> = {
       access_key: accessKey,
       name: formData.get("name") ?? "",
@@ -210,11 +200,7 @@ const topicOptions = [
 
       if (response.ok && data.success) {
         form.reset();
-        setResult("");
-        showSuccessToast("Thanks, your message was sent.");
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2500);
+        setResult("Thanks, your message was sent.");
       } else {
         setResult(
           data.message ??
