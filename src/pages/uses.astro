@@ -4,12 +4,14 @@
 import Base from "../layouts/Base.astro";
 import UsesIndex from "../features/uses/UsesIndex.astro";
 import UsesSection from "../features/uses/UsesSection.astro";
-import { sections } from "../features/uses/tools";
+import { sections, updated } from "../features/uses/tools";
+
+const updatedLabel = new Intl.DateTimeFormat("en-NZ", { month: "long", year: "numeric" }).format(updated);
 ---
 
 <Base
   title="Uses — JP Yepez"
-  description="Tools, setup, and stack I use day to day, and why."
+  description="The tools I use day to day, and why I picked them."
   column="home"
 >
   <main
@@ -21,12 +23,14 @@ import { sections } from "../features/uses/tools";
           Uses
         </h1>
         <p class="mt-3.5 font-mono text-xs tracking-[0.02em] text-primary">
-          Tools, setup, and stack I use day to day
+          What I work with day to day
         </p>
-        <!-- TODO(JP): draft intro written by Claude; rewrite in your own words. -->
         <p class="mt-10 text-[clamp(22px,2vw,28px)] leading-tight tracking-[-0.015em] font-medium text-balance max-w-[22em]">
-          A split keyboard, a modal editor, and an AI pair in the next pane. The rest
-          is whatever gets the work shipped.
+          Most of my day happens in a terminal, usually with quite a few agents
+          running in parallel.
+        </p>
+        <p class="mt-6 font-mono text-[11px] text-base-content/70">
+          Updated <time datetime={updated.toISOString().slice(0, 7)}>{updatedLabel}</time>
         </p>
       </div>
       <UsesIndex sections={sections} />
