@@ -1,61 +1,18 @@
 ---
+// src/components/ui/Button.astro
 interface Props {
   type?: "button" | "submit" | "reset";
-  variant?: "primary" | "ghost" | "outline" | "secondary";
-  fullWidth?: boolean;
-  /** Optional id so callers can target this button (e.g. to set loading state via classList.add("is-loading") and disabled). */
+  /** Optional id so callers can target this button, e.g. to disable it and swap its label while sending. */
   id?: string;
 }
 
-const {
-  type = "button",
-  variant = "primary",
-  fullWidth = false,
-  id,
-} = Astro.props as Props;
-
-const baseClass = "btn h-11";
-const variantClass =
-  variant === "ghost"
-    ? "btn-ghost"
-    : variant === "outline"
-      ? "btn-outline"
-      : variant === "secondary"
-        ? "btn-secondary"
-        : "btn-primary";
-const widthClass = fullWidth ? "w-full" : "";
+const { type = "button", id } = Astro.props as Props;
 ---
 
 <button
   type={type}
   id={id}
-  class={`${baseClass} ${variantClass} ${widthClass}`}
+  class="inline-flex items-center justify-center h-11 px-5 rounded-[2px] bg-primary text-primary-content text-sm font-medium hover:bg-[color-mix(in_oklch,var(--color-primary)_88%,white)] active:scale-[0.97] disabled:opacity-70 disabled:cursor-progress transition-[transform,background-color]"
 >
-  <span class="button-text">
-    <slot />
-  </span>
-  <span
-    class="loading loading-spinner loading-xs button-loading"
-    aria-hidden="true"></span>
+  <slot />
 </button>
-
-<style>
-  .button-loading {
-    display: none;
-  }
-  /* Use is-loading so DaisyUI’s .btn.loading doesn’t affect layout */
-  button.is-loading {
-    position: relative;
-  }
-  button.is-loading .button-text {
-    visibility: hidden;
-  }
-  button.is-loading .button-loading {
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    vertical-align: middle;
-  }
-</style>
