@@ -33,7 +33,7 @@ export const sections: ToolSection[] = [
       {
         label: "Parallel work",
         values: [{ name: "dmux", href: "https://github.com/standardagents/dmux" }],
-        note: "A few agents at once, each in its own worktree, so they don't step on each other.",
+        note: "A few agents at once, each in its own worktree, so they don’t step on each other.",
       },
       {
         label: "Voice",
@@ -127,7 +127,7 @@ export const sections: ToolSection[] = [
       {
         label: "Desktop",
         values: [{ name: "Electron", href: "https://www.electronjs.org" }],
-        note: "For the desktop app work I'm doing at the moment.",
+        note: "For the desktop app work I’m doing at the moment.",
       },
       {
         label: "Data",
@@ -248,7 +248,7 @@ export const sections: ToolSection[] = [
       {
         label: "Machine",
         values: [{ name: "MacBook Pro", href: "https://www.apple.com/macbook-pro/" }],
-        note: "Usually whatever work hands me. I'm pretty conservative on specs anyway.",
+        note: "Usually whatever work hands me. I’m pretty conservative on specs anyway.",
       },
       {
         label: "Keyboard",
@@ -256,12 +256,12 @@ export const sections: ToolSection[] = [
           { name: "Ergodox EZ", href: "https://ergodox-ez.com" },
           { name: "Moonlander", href: "https://www.zsa.io/moonlander" },
         ],
-        note: "Ergodox at the desk, Moonlander when I'm on the go.",
+        note: "Ergodox at the desk, Moonlander when I’m on the go.",
       },
       {
         label: "Mouse",
         values: [{ name: "Logitech Lift", href: "https://www.logitech.com/products/mice/lift-vertical-ergonomic-mouse.html" }],
-        note: "Vertical, so my wrist isn't twisted all day.",
+        note: "Vertical, so my wrist isn’t twisted all day.",
       },
     ],
   },

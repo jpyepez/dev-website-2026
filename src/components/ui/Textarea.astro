@@ -14,7 +14,7 @@ const { name, label, required = false, rows = 4, placeholder, error } = Astro.pr
 <div class="space-y-1.5">
   <label for={name} class="block text-sm font-medium text-base-content/70">
     {label}
-    {required && <span class="text-base-content/50" aria-hidden="true">*</span>}
+    {required && <span aria-hidden="true">*</span>}
   </label>
   <textarea
     id={name}

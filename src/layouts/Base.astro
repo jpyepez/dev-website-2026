@@ -15,6 +15,8 @@ interface Props {
   column?: Column;
   /** Keep the page out of search results, e.g. a section that has no content yet. */
   noindex?: boolean;
+  /** Open Graph type: "article" for posts, "website" for everything else. */
+  ogType?: "website" | "article";
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   description = "Full-stack engineer and frontend specialist. TypeScript, React, infrastructure, and testing.",
   column = "prose",
   noindex = false,
+  ogType = "website",
 } = Astro.props;
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -37,6 +40,7 @@ const ogImageAlt =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#04111c" />
+    <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={pageUrl} />
     {noindex && <meta name="robots" content="noindex" />}
     <link
@@ -51,7 +55,7 @@ const ogImageAlt =
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
