@@ -18,11 +18,15 @@ The notes are the point. A uses page gets read to learn how someone works, not t
 | Section heading | Mono 11px, teal two-digit number, hairline below |
 | Row | Mono 11px label (136px column from `md`), tools at `text-xl` medium, note at `text-base` 70% opacity, max 34em |
 | Multiple tools | Joined with a 30% opacity ` / `; screen readers hear commas |
+| Tool links | Every tool name links to its official site; 25% opacity underline at a 5px offset, teal on hover |
+| Updated date | Mono 11px under the intro, from `updated` in `tools.ts` |
 | Index | Mono 11px rows, min 40px tall, tool count on the right; the section in view is marked `aria-current="location"` |
 
 On phones the index is hidden and every row stacks label, tools, then note.
 
+What goes on the page is defined under "Uses Page" in [.work/CONTEXT.md](../.work/CONTEXT.md).
+
 ## Rejected
 
-- **Round 1:** **Current** (the old badge list) was the dull page this replaced, and its teal badges matched nothing on the new home page. **Figure** (a framed desk schematic with numbered callouts) was the most memorable, but it covered 5 of 19 tools, pushed the list down on phones and repeated the home page's interactive figure. A small static version for the Hardware section is still an option. **Ledger** without notes was tidy but kept the one-word content that made the page dull. **Annotated** in a single 40rem column was right on content but left the right half of a desktop screen empty.
+- **Round 1:** **Current** (the old badge list) was the dull page this replaced, and its teal badges matched nothing on the new home page. **Figure** (a framed desk schematic with numbered callouts) was the most memorable, but it covered 5 of 19 tools, pushed the list down on phones and repeated the home page's interactive figure. A smaller version for the Hardware section was also ruled out: the page has no picture. **Ledger** without notes was tidy but kept the one-word content that made the page dull. **Annotated** in a single 40rem column was right on content but left the right half of a desktop screen empty.
 - **Round 2:** **Ledger** with notes (a full-width table of label, tools and note) came closest. It lost because the note read as a secondary column and the eye had to travel both across and down. The split layout gives the same quick jumping through its index.
