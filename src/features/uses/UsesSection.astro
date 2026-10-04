@@ -1,19 +1,24 @@
 ---
-interface Props {
-  title: string;
-  items: [string, string[]][];
-}
-const { title, items } = Astro.props;
+// src/features/uses/UsesSection.astro
 import UsesDefinitionItem from "./UsesDefinitionItem.astro";
+import { pad, type ToolSection } from "./tools";
+
+interface Props {
+  section: ToolSection;
+  index: number;
+}
+const { section, index } = Astro.props;
 ---
 
-<section>
-  <h2 class="text-sm font-semibold uppercase tracking-wider text-base-content/70 mb-4">
-    {title}
+<section id={section.id} aria-labelledby={`${section.id}-heading`} class="scroll-mt-6" data-uses-section>
+  <h2
+    id={`${section.id}-heading`}
+    class="flex items-baseline gap-3 pb-3 border-b border-base-300 font-mono text-[11px] text-base-content/70"
+  >
+    <span class="text-primary tabular-nums">{pad(index + 1)}</span>
+    {section.title}
   </h2>
-  <dl class="space-y-3">
-    {items.map(([label, values]) => (
-      <UsesDefinitionItem label={label} values={values} />
-    ))}
+  <dl>
+    {section.items.map((item) => <UsesDefinitionItem {...item} />)}
   </dl>
 </section>

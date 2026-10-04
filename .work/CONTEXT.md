@@ -129,3 +129,13 @@ Content tone (chosen 2026-05-15): **NZ-flavoured but globally readable.**
 Posts open with NZ framing/examples ("talking to Wellington startup CTOs
 lately…") but the underlying ideas generalise. Earns local trust without
 making posts useless to outsiders.
+
+### Uses Page
+The `/uses` page: the tools the user works with day to day, each with a
+one-line first-person reason for choosing it, every tool linked to its
+official site (no affiliate links), and an "updated" date. Setup tools
+(hardware, editor, terminal, apps) must be daily drivers across work and
+personal machines; craft tools (stack, creative) must be what the user would
+reach for today, even if no current project uses them. No desk photo or figure
+(2026-10-04).
+_Avoid_: setup page, stack page

@@ -1,0 +1,81 @@
+---
+// src/features/uses/UsesIndex.astro
+// Section index for the sticky left column; marks the section in view.
+import { pad, type ToolSection } from "./tools";
+
+interface Props {
+  sections: ToolSection[];
+}
+const { sections } = Astro.props;
+---
+
+<nav aria-label="Sections" class="hidden lg:block">
+  <ol class="border-t border-base-300">
+    {
+      sections.map((section, i) => (
+        <li>
+          <a
+            href={`#${section.id}`}
+            data-uses-index-link
+            class="flex items-baseline gap-3 min-h-10 py-2.5 border-b border-base-300 font-mono text-[11px] text-base-content/70 hover:text-primary aria-[current]:text-base-content transition-colors"
+          >
+            <span class="text-primary tabular-nums">{pad(i + 1)}</span>
+            {section.title}
+            <span class="ml-auto tabular-nums text-base-content/60">
+              {section.items.reduce((n, item) => n + item.values.length, 0)}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-uses-index-link]")];
+  const sections = [...document.querySelectorAll<HTMLElement>("[data-uses-section]")];
+
+  // A clicked link stays marked until the reader scrolls on from where the jump landed:
+  // near the bottom of the page a short section can't scroll up far enough to be picked by position.
+  let pinned: string | null = null;
+  let pinnedY: number | null = null;
+
+  function mark(id: string) {
+    for (const link of links) {
+      if (link.hash === `#${id}`) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    }
+  }
+
+  // The current section is the last one whose top has passed 30% of the viewport.
+  // Short sections at the end never get that far, so the bottom of the page selects the last one.
+  function update() {
+    // The first update after a click is the jump itself; it records where the jump landed.
+    if (pinned && pinnedY === null) pinnedY = window.scrollY;
+    else if (pinned && pinnedY !== null && Math.abs(window.scrollY - pinnedY) > 8) pinned = null;
+    if (pinned) return mark(pinned);
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= window.innerHeight * 0.3) current = section;
+    }
+    if (atBottom) current = sections[sections.length - 1];
+    mark(current.id);
+  }
+
+  let frame = 0;
+  const schedule = () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(update);
+  };
+  links.forEach((link) =>
+    link.addEventListener("click", () => {
+      pinned = link.hash.slice(1);
+      pinnedY = null;
+      mark(pinned);
+    })
+  );
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  update();
+</script>

@@ -1,75 +1,44 @@
 ---
 // src/pages/uses.astro
+// Layout and values: docs/uses-design.md
 import Base from "../layouts/Base.astro";
+import UsesIndex from "../features/uses/UsesIndex.astro";
 import UsesSection from "../features/uses/UsesSection.astro";
+import { sections, updated } from "../features/uses/tools";
 
-const sections: { title: string; items: [string, string[]][] }[] = [
-  {
-    title: "Editor",
-    items: [
-      ["Editor", ["Neovim"]],
-      ["AI", ["Claude Code"]],
-    ],
-  },
-  {
-    title: "Hardware",
-    items: [
-      ["Keyboard", ["Ergodox"]],
-      ["Mouse", ["Logitech Lift"]],
-    ],
-  },
-  {
-    title: "Terminal & Shell",
-    items: [
-      ["Terminal", ["iTerm2"]],
-      ["Shell", ["zsh", "Oh My Zsh"]],
-    ],
-  },
-  {
-    title: "Stack",
-    items: [
-      ["Frameworks", ["React", "Next.js", "Astro", "React Native"]],
-      ["Languages", ["TypeScript", "JavaScript"]],
-      ["Styling", ["Tailwind"]],
-      ["Backend", ["Firebase", "Supabase", "Convex"]],
-      ["Package Manager", ["pnpm", "bun"]],
-      ["Browser", ["Helium"]],
-      ["API Testing", ["Yaak"]],
-    ],
-  },
-  {
-    title: "Creative",
-    items: [
-      ["Design", ["Figma"]],
-      ["2D / Data Viz", ["Visx", "D3"]],
-      ["3D", ["Three.js", "GLSL"]],
-    ],
-  },
-  {
-    title: "Productivity",
-    items: [["Launcher", ["Raycast"]]],
-  },
-];
+const updatedLabel = new Intl.DateTimeFormat("en-NZ", { month: "long", year: "numeric" }).format(updated);
 ---
 
 <Base
   title="Uses — JP Yepez"
-  description="Tools, setup, and stack I use day to day."
+  description="The tools I use day to day, and why I picked them."
+  column="home"
 >
-  <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
-    <div class="max-w-xl w-full">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Uses</h1>
-      <p class="text-base-content/90 leading-relaxed mb-12">
-        Tools, setup, and stack I use day to day.
-      </p>
-
-      <div class="space-y-10">
-        {
-          sections.map((section) => (
-            <UsesSection title={section.title} items={section.items} />
-          ))
-        }
+  <main
+    class="max-w-[1360px] mx-auto px-4 md:px-10 pt-10 md:pt-14 pb-28 grid gap-y-14 lg:grid-cols-[5fr_7fr] lg:gap-x-[clamp(32px,5vw,72px)]"
+  >
+    {/* Sticky only when the column fits the screen; it runs about 625px tall once stuck. */}
+    <div class="lg:[@media(min-height:700px)]:sticky lg:top-6 lg:self-start grid gap-14">
+      <div>
+        <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em]">
+          Uses
+        </h1>
+        <p class="mt-3.5 font-mono text-xs tracking-[0.02em] text-primary">
+          What I work with day to day
+        </p>
+        <p class="mt-10 text-[clamp(22px,2vw,28px)] leading-tight tracking-[-0.015em] font-medium text-balance max-w-[22em]">
+          Most of my day happens in a terminal, usually with quite a few agents
+          running in parallel.
+        </p>
+        <p class="mt-6 font-mono text-[11px] text-base-content/70">
+          Updated <time datetime={updated.toISOString().slice(0, 7)}>{updatedLabel}</time>
+        </p>
       </div>
+      <UsesIndex sections={sections} />
+    </div>
+
+    <div class="grid gap-14 md:gap-16 lg:pt-1">
+      {sections.map((section, i) => <UsesSection section={section} index={i} />)}
     </div>
   </main>
 </Base>
