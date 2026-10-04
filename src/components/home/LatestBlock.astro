@@ -47,7 +47,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
     >
       <h2
         id="latest-heading"
-        class="font-mono text-[11px] text-base-content/70 pb-3 border-b border-base-300"
+        class="font-mono text-label text-base-content/70 pb-3 border-b border-base-300"
       >
         Latest
       </h2>
@@ -58,10 +58,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
               href={entry.href}
               class="group grid grid-cols-[auto_1fr] md:grid-cols-[80px_80px_1fr_auto] gap-x-4 gap-y-2 items-baseline py-5 border-b border-base-300"
             >
-              <span class="font-mono text-[11px] text-primary">
+              <span class="font-mono text-label text-primary">
                 Fig. {String(i + 2).padStart(2, "0")}
               </span>
-              <span class="font-mono text-[11px] text-base-content/70">
+              <span class="font-mono text-label text-base-content/70">
                 {entry.kind}
               </span>
               <span class="col-span-2 md:col-span-1 text-xl leading-snug font-medium tracking-[-0.01em] text-balance group-hover:text-primary transition-colors">

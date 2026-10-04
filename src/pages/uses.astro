@@ -23,14 +23,14 @@ const updatedLabel = new Intl.DateTimeFormat("en-NZ", { month: "long", year: "nu
         <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em]">
           Uses
         </h1>
-        <p class="mt-3.5 font-mono text-xs tracking-[0.02em] text-primary">
+        <p class="mt-3.5 font-mono text-label tracking-[0.02em] text-primary">
           What I work with day to day
         </p>
         <p class="mt-10 text-[clamp(22px,2vw,28px)] leading-tight tracking-[-0.015em] font-medium text-balance max-w-[22em]">
           Most of my day happens in a terminal, usually with quite a few agents
           running in parallel.
         </p>
-        <p class="mt-6 font-mono text-[11px] text-base-content/70">
+        <p class="mt-6 font-mono text-label text-base-content/70">
           Updated <time datetime={updated.toISOString().slice(0, 7)}>{updatedLabel}</time>
         </p>
       </div>

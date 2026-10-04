@@ -21,16 +21,16 @@ const topicOptions = [
 >
   <main class="min-h-screen px-4 py-12 md:py-16 flex flex-col items-center">
     <div class="max-w-xl w-full">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+      <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em] mb-4">
         Contact
       </h1>
-      <p class="text-base-content/90 leading-relaxed mb-12">
+      <p class="leading-relaxed mb-12">
         Get in touch for freelance, consulting, or collaboration.
       </p>
 
       <form
         id="contact-form"
-        class="space-y-6"
+        class="space-y-4"
         data-access-key={accessKey}
         method="post"
       >
@@ -78,7 +78,7 @@ const topicOptions = [
 
         <div
           id="result"
-          class="text-sm text-base-content/80"
+          class="text-sm text-base-content/70"
           role="status"
           aria-live="polite"
         >
@@ -111,7 +111,6 @@ const topicOptions = [
     const errors = form.querySelectorAll("[id$='-error']");
     errors.forEach((el) => {
       el.textContent = "";
-      (el as HTMLElement).classList.add("hidden");
     });
     form
       .querySelectorAll("[aria-invalid]")
@@ -128,13 +127,12 @@ const topicOptions = [
     if (input) input.setAttribute("aria-invalid", "true");
     if (errorEl) {
       errorEl.textContent = message;
-      errorEl.classList.remove("hidden");
     }
   }
 
   function setResult(message: string, isError = false) {
     resultEl.textContent = message;
-    resultEl.className = `text-sm ${isError ? "text-error" : "text-base-content/80"}`;
+    resultEl.className = `text-sm ${isError ? "text-error" : "text-base-content/70"}`;
   }
 
   function showSuccessToast(message: string) {

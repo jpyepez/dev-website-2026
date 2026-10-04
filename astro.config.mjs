@@ -12,6 +12,11 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   site: "https://jpyepez.com",
 
+  // Token colours come from the palette in src/styles/global.css.
+  markdown: {
+    shikiConfig: { theme: "css-variables" },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

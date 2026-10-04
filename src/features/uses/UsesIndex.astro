@@ -17,7 +17,7 @@ const { sections } = Astro.props;
           <a
             href={`#${section.id}`}
             data-uses-index-link
-            class="flex items-baseline gap-3 min-h-10 py-2.5 border-b border-base-300 font-mono text-[11px] text-base-content/70 hover:text-primary aria-[current]:text-base-content transition-colors"
+            class="flex items-baseline gap-3 min-h-10 py-2.5 border-b border-base-300 font-mono text-label text-base-content/70 hover:text-primary aria-[current]:text-base-content transition-colors"
           >
             <span class="text-primary tabular-nums">{pad(i + 1)}</span>
             {section.title}
