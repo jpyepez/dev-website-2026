@@ -7,9 +7,9 @@ Astro 5 static site, server-rendered at build time, deployed to Vercel.
 - `src/pages/` — file-based routes. One `.astro` file per page.
 - `src/layouts/` — page shells. Currently only `Base.astro` (HTML, meta, fonts, daisyUI theme).
 - `src/components/` — generic, reusable pieces.
-  - `ui/` — primitives (Button, Input, Select, Textarea, SocialLinks, SocialLink).
+  - `ui/` — primitives (Button, Input, Textarea, SocialLinks, SocialLink); `field.ts` holds the shared field classes.
   - `layout/` — chrome (Header, ToastContainer).
-- `src/features/` — feature-folder pattern for grouped, page-specific components (e.g. `features/uses/UsesSection.astro`, `features/home/` for the home terrain figure). Add a folder per feature once it has 2+ files.
+- `src/features/` — feature-folder pattern for grouped, page-specific components (e.g. `features/uses/UsesSection.astro`, `features/home/` for the home terrain figure, `features/contact/` for the contact form). Add a folder per feature once it has 2+ files.
 - `src/styles/global.css` — Tailwind 4 + daisyUI imports, global resets.
 - `public/` — static assets (favicons, manifest).
 
@@ -25,13 +25,13 @@ Asymmetry rationale: blog content is uniform, so a collection earns its abstract
 ## Styling
 
 - **Tailwind 4** via `@tailwindcss/vite` plugin (configured in `astro.config.mjs`, no separate config file).
-- **daisyUI 5** for component classes. Theme is `night` (dark), set via `data-theme="night"` on `<html>`, with its colours overridden in `global.css`: ink-blue base, teal `primary`. Values and rationale in [home-design.md](./home-design.md); the uses page layout is in [uses-design.md](./uses-design.md).
+- **daisyUI 5** for component classes. Theme is `night` (dark), set via `data-theme="night"` on `<html>`, with its colours overridden in `global.css`: ink-blue base, teal `primary`. Values and rationale in [home-design.md](./home-design.md); the uses and contact page layouts are in [uses-design.md](./uses-design.md) and [contact-design.md](./contact-design.md).
 - **Geist Variable** and **Geist Mono Variable** via `@fontsource-variable/geist` and `@fontsource-variable/geist-mono` (`font-sans`, `font-mono`).
 - Class style: utility-first; daisyUI semantic classes (`bg-base-100`, `text-base-content`, `text-primary`) preferred over hardcoded colours so theme swaps don't require sweeps.
 
 ## Forms
 
-`/contact` posts to **Web3Forms** via `fetch` from a client-side `<script>`. Validation is **Zod in the browser**, errors rendered into per-field error elements. Access key comes from `WEB3FORMS_ACCESS_KEY` env var.
+`/contact` posts to **Web3Forms** via `fetch` from the `<script>` in `features/contact/ContactForm.astro`. Validation is **Zod in the browser**, with errors rendered into per-field error elements; the topic list in `features/contact/topics.ts` feeds both the radio chips and the schema. Without JavaScript the form posts directly and the browser checks required fields. Access key comes from `WEB3FORMS_ACCESS_KEY` env var.
 
 ## Build & deploy
 

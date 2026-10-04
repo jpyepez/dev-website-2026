@@ -30,7 +30,8 @@ Committed publishing rhythm (2026-05-15):
 - LinkedIn: 2–3 posts per week; one weekly post should be a snippet/teaser
   from that month's blog post.
 - [[creative-coding]]: 1 finished lab piece per quarter (4/year).
-- Meetups: attend 1 per month; submit 1 talk per quarter.
+- Meetups: attend 1 per month. Speaking is opportunistic: accept an
+  invitation, but no CFP target (revised 2026-05-20).
 
 ### Capture System
 The post pipeline depends on a daily capture habit, not on weekly bursts of
@@ -44,6 +45,13 @@ Sequencing decision (2026-05-15): the user could not surface a specific recent
 moment fitting either thesis on demand. That's a real signal — first blog
 post should not be drafted yet. **Install the capture file, collect for ~4
 weeks, then publish.** Avoids a generic-feeling launch post.
+
+### Contact Page
+The `/contact` page: where an inbound lead or a speaking invitation
+arrives. Written first for someone at an NZ company who might hire or
+contract the user; organisers and peers are welcome but not addressed
+directly. Speaking has its own topic so invitations have an obvious home
+without the site promoting the user as a speaker (2026-10-05).
 
 ### Creative Coding
 The artistic side of the site: web-native visual work — Three.js canvases,
