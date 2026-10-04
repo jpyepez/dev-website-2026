@@ -21,7 +21,7 @@ const { sections } = Astro.props;
           >
             <span class="text-primary tabular-nums">{pad(i + 1)}</span>
             {section.title}
-            <span class="ml-auto tabular-nums text-base-content/40">
+            <span class="ml-auto tabular-nums text-base-content/60">
               {section.items.reduce((n, item) => n + item.values.length, 0)}
             </span>
           </a>

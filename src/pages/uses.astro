@@ -17,7 +17,8 @@ const updatedLabel = new Intl.DateTimeFormat("en-NZ", { month: "long", year: "nu
   <main
     class="max-w-[1360px] mx-auto px-4 md:px-10 pt-10 md:pt-14 pb-28 grid gap-y-14 lg:grid-cols-[5fr_7fr] lg:gap-x-[clamp(32px,5vw,72px)]"
   >
-    <div class="lg:sticky lg:top-6 lg:self-start grid gap-14">
+    {/* Sticky only when the column fits the screen; it runs about 625px tall once stuck. */}
+    <div class="lg:[@media(min-height:700px)]:sticky lg:top-6 lg:self-start grid gap-14">
       <div>
         <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em]">
           Uses
