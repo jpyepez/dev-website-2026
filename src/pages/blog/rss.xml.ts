@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: "JP Yepez — Writing",
-    description: "Long-form posts on senior frontend, mobile, and AI tooling.",
+    description: "Posts on frontend and mobile work, and how AI agents are changing it.",
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
