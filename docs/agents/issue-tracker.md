@@ -47,6 +47,8 @@ Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on t
 - **A PRD is a parent issue.** The issue body is the spec, labelled `ready`. Its tickets are GitHub sub-issues of it, added in dependency order (blockers first): `gh api --method POST repos/<owner>/<repo>/issues/<parent>/sub_issues -F sub_issue_id=<child-db-id>`, where `<child-db-id>` is the child's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`). Blocking between tickets uses native issue dependencies, as described under Wayfinding below.
 - **Promote, don't duplicate.** When a PRD comes out of an existing issue (usually an inbox item after triage), replace that issue's body with the PRD instead of opening a new issue. First post the original body as a comment headed `Original note:` so it stays readable. Retitle the issue if the scope changed.
 - **PRs close tickets**: put `Closes #<n>` in the PR description for each ticket it finishes. Close the parent PRD issue once all its sub-issues are closed.
+- **Claim before working**: before implementing an issue, assign it with `gh issue edit <n> --add-assignee @me`. An assignee is what marks work as in progress.
+- **Board**: the [jpyepez.com project](https://github.com/users/jpyepez/projects/1) shows the issues in five views (Inbox, Features, Ready, In progress, Shipped). Every view filters on labels, assignees and open/closed state, so nothing on the board needs updating by hand.
 - **Not issues**: glossary, ADRs and out-of-scope records stay as files (see `domain.md`).
 
 ## Wayfinding operations
