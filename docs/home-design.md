@@ -1,6 +1,6 @@
 # Home design: Specimen · Type
 
-Decided 2026-10-02 after three rounds of side-by-side prototypes (`/proto/home`, since deleted). Why the home page leads with a visual at all is in [ADR-0001](../.work/adr/0001-home-leads-with-visual-hero.md); this file records what it looks like and the numbers behind it.
+Decided 2026-10-02 after three rounds of side-by-side prototypes (`/proto/home`, since deleted). Why the home page leads with a visual at all is in [ADR-0001](./adr/0001-home-leads-with-visual-hero.md); this file records what it looks like and the numbers behind it.
 
 ## Direction
 

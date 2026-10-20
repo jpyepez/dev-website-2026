@@ -24,7 +24,7 @@ The notes are the point. A uses page gets read to learn how someone works, not t
 
 On phones the index is hidden and every row stacks label, tools, then note.
 
-What goes on the page is defined under "Uses Page" in [.work/CONTEXT.md](../.work/CONTEXT.md).
+What goes on the page is defined under "Uses Page" in [CONTEXT.md](../CONTEXT.md).
 
 ## Rejected
 
