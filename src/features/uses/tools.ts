@@ -33,12 +33,12 @@ export const sections: ToolSection[] = [
       {
         label: "Parallel work",
         values: [{ name: "dmux", href: "https://github.com/standardagents/dmux" }],
-        note: "A few agents at once, each in its own worktree, so they don’t step on each other.",
+        note: "A few agents at once, each in its own worktree.",
       },
       {
         label: "Voice",
         values: [{ name: "Wispr Flow", href: "https://wisprflow.ai" }],
-        note: "Probably talking to Claude more than typing to it at this point. I use it for as much as I can.",
+        note: "Probably talking to Claude more than typing to it at this point.",
       },
     ],
   },
@@ -52,7 +52,7 @@ export const sections: ToolSection[] = [
           { name: "Neovim", href: "https://neovim.io" },
           { name: "LazyVim", href: "https://www.lazyvim.org" },
         ],
-        note: "Kept close to the LazyVim defaults, tweaking a bit as I go.",
+        note: "Kept close to the LazyVim defaults, tweaking as I go.",
       },
       {
         label: "Theme & font",
@@ -71,7 +71,7 @@ export const sections: ToolSection[] = [
       {
         label: "Terminal",
         values: [{ name: "Ghostty", href: "https://ghostty.org" }],
-        note: "Replaced iTerm2 for me. Fast and pretty low maintenance so far.",
+        note: "Replaced iTerm2 for me. Fast and low maintenance so far.",
       },
       {
         label: "Multiplexer",
@@ -79,7 +79,7 @@ export const sections: ToolSection[] = [
           { name: "tmux", href: "https://github.com/tmux/tmux" },
           { name: "tmuxinator", href: "https://github.com/tmuxinator/tmuxinator" },
         ],
-        note: "A session per project, so I can jump back in where I left off.",
+        note: "One tmuxinator layout per project.",
       },
       {
         label: "Shell",
@@ -127,7 +127,7 @@ export const sections: ToolSection[] = [
       {
         label: "Desktop",
         values: [{ name: "Electron", href: "https://www.electronjs.org" }],
-        note: "For the desktop app work I’m doing at the moment.",
+        note: "When it has to be a desktop app, so the React carries over.",
       },
       {
         label: "Data",
@@ -135,12 +135,12 @@ export const sections: ToolSection[] = [
           { name: "TanStack Query", href: "https://tanstack.com/query" },
           { name: "Zod", href: "https://zod.dev" },
         ],
-        note: "Server state and validation sorted, so I can focus on the actual feature.",
+        note: "Query for server state, with Zod checking it on the way in.",
       },
       {
         label: "Styling",
         values: [{ name: "Tailwind", href: "https://tailwindcss.com" }],
-        note: "Still my preferred way to style things, with colour tokens in OKLCH.",
+        note: "Still the default, with colour tokens in OKLCH.",
       },
       {
         label: "Backend",
@@ -154,7 +154,7 @@ export const sections: ToolSection[] = [
       {
         label: "Testing",
         values: [{ name: "Vitest", href: "https://vitest.dev" }],
-        note: "Fast and plays nicely with Vite, so not much config to look after.",
+        note: "The obvious pick once a project is on Vite.",
       },
       {
         label: "Tooling",
@@ -185,12 +185,12 @@ export const sections: ToolSection[] = [
       {
         label: "3D",
         values: [{ name: "Three.js", href: "https://threejs.org" }],
-        note: "My go-to for any 3D or visual stuff in the browser.",
+        note: "My go-to for 3D in the browser.",
       },
       {
         label: "Shaders",
         values: [{ name: "GLSL", href: "https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.html" }],
-        note: "For shaders, when the GPU should be doing the heavy lifting.",
+        note: "I’ve used shaders for installations and web pieces, mostly through Three.js.",
       },
       {
         label: "Data viz",
@@ -198,7 +198,7 @@ export const sections: ToolSection[] = [
           { name: "D3", href: "https://d3js.org" },
           { name: "Visx", href: "https://airbnb.io/visx" },
         ],
-        note: "Visx when it lives in a React app, D3 when I need a bit more control.",
+        note: "Visx when it lives in a React app, D3 when I need more control.",
       },
       {
         label: "Audio",
@@ -248,7 +248,7 @@ export const sections: ToolSection[] = [
       {
         label: "Machine",
         values: [{ name: "MacBook Pro", href: "https://www.apple.com/macbook-pro/" }],
-        note: "Usually whatever work hands me. I’m pretty conservative on specs anyway.",
+        note: "Usually whatever work hands me. I’m conservative on specs anyway.",
       },
       {
         label: "Keyboard",

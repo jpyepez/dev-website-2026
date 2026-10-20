@@ -14,20 +14,20 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
   column="gallery"
   noindex={pieces.length === 0}
   title="Lab — JP Yepez"
-  description="Finished visual and interactive web pieces — Three.js, generative, data viz."
+  description="Visual and interactive pieces for the browser, each with a short write-up on how I built it."
 >
   <main class="px-4 py-12 md:py-16 flex flex-col items-center">
     <div class="max-w-3xl w-full">
       <h1 class="text-5xl md:text-6xl leading-[0.95] font-semibold tracking-[-0.045em] mb-4">Lab</h1>
       <p class="leading-relaxed mb-12">
-        Finished visual and interactive web pieces — Three.js, generative, data
-        viz.
+        Visual and interactive pieces for the browser, each with a short
+        write-up on how I built it.
       </p>
 
       {
         pieces.length === 0 ? (
           <p class="text-base-content/70 leading-relaxed">
-            Nothing shipped yet — first piece lands soon.
+            Nothing here yet.
           </p>
         ) : (
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">

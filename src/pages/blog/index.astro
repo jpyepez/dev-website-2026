@@ -17,7 +17,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
 <Base
   noindex={posts.length === 0}
   title="Writing — JP Yepez"
-  description="Long-form posts on senior frontend, mobile, and AI tooling."
+  description="Posts on frontend and mobile work, and how AI agents are changing it."
 >
   <main class="px-4 py-12 md:py-16 flex flex-col items-center">
     <div class="max-w-xl w-full">
@@ -25,13 +25,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-NZ", {
         Writing
       </h1>
       <p class="leading-relaxed mb-12">
-        Long-form posts on senior frontend, mobile, and AI tooling.
+        Posts on frontend and mobile work, and how AI agents are changing it.
       </p>
 
       {
         posts.length === 0 ? (
           <p class="text-base-content/70 leading-relaxed">
-            Nothing published yet — first piece lands soon.
+            Nothing published yet.
           </p>
         ) : (
           <ul class="space-y-8">

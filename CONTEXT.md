@@ -14,14 +14,16 @@ a way that earns inbound NZ leads, speaking invites, peer recognition.
 See [[theses]] for the working positions blog posts argue from.
 
 ### Brand Position
-**Experienced engineer who uses AI to keep the craft bar high — including the
-visual/interactive work that used to be too expensive to justify.** This is
-the synthesis of both [[theses]]: 12 years of React/mobile muscle memory plus
-fluency with modern AI tooling, applied to keeping quality high on animation,
-transitions, data viz, and 3D — categories that AI is making newly affordable
-for ordinary websites. Distinct from "senior engineer who uses AI" (too
-generic) and "Three.js guy" (too narrow). The [[blog]] explains the position;
-the [[creative-coding]] lab proves it.
+**Experienced engineer with high craft standards, especially on animation and
+interface detail, who works through AI agents.** 12 years of React/mobile
+muscle memory plus fluency with modern AI tooling. The craft comes first
+because it's the right way to build, not because AI makes it cheap: AI is how
+the work gets done, never the reason for the care (revised 2026-10-20). That
+AI makes visual work affordable for ordinary websites is [[theses]] B, a claim
+about the industry the [[blog]] argues, not the author's personal motive.
+Distinct from "senior engineer who uses AI" (too generic) and "Three.js guy"
+(too narrow). The [[blog]] explains the position; the [[creative-coding]] lab
+proves it.
 
 ### Cadence
 Committed publishing rhythm (2026-05-15):
@@ -95,6 +97,14 @@ the home page, after the user first called it "an artist's website" and the
 homepage copy showed the engineer track was primary. Revised 2026-10-02 to
 foreground the visual side on the home page; see ADR-0001.
 
+### Site Voice
+The register of every word on the site, from page copy to meta descriptions:
+first person and plain, but not too casual: a note to someone you'd like to
+work with, not a chat with a teammate. Short on the home page. Claims are
+concrete (a thing done, a number, a reason) rather than qualities anyone
+could list. Chosen 2026-10-20.
+_Avoid_: brand voice, tone of voice
+
 ### Site Goal
 The underlying goal of the site is **reputation-building in the New Zealand
 engineering scene** — being recognised as an experienced frontend/mobile/AI
@@ -144,6 +154,7 @@ one-line first-person reason for choosing it, every tool linked to its
 official site (no affiliate links), and an "updated" date. Setup tools
 (hardware, editor, terminal, apps) must be daily drivers across work and
 personal machines; craft tools (stack, creative) must be what the user would
-reach for today, even if no current project uses them. No desk photo or figure
-(2026-10-04).
+reach for today, even if no current project uses them. Written for other
+developers: a note skips what the tool is and says why it's here. No desk
+photo or figure (2026-10-04).
 _Avoid_: setup page, stack page
