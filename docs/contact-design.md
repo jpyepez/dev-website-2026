@@ -33,7 +33,7 @@ On phones the order is intro, form, then social links. The grid uses the same `g
 
 ## Content
 
-Settled 2026-10-05. Who the page is for is under "Contact Page" in [.work/CONTEXT.md](../.work/CONTEXT.md).
+Settled 2026-10-05. Who the page is for is under "Contact Page" in [CONTEXT.md](../CONTEXT.md).
 
 - Topics, in order: Freelance, Consulting, Speaking, Just saying hi. Nothing is selected when the page loads, so the subject line in the inbox reflects what the sender actually chose.
 - Speaking has its own topic so invitations have an obvious place, but the intro doesn't advertise talks. Collaboration was dropped; side projects come in under "Just saying hi".
