@@ -37,7 +37,7 @@ Settled 2026-10-05. Who the page is for is under "Contact Page" in [CONTEXT.md](
 
 - Topics, in order: Freelance, Consulting, Speaking, Just saying hi. Nothing is selected when the page loads, so the subject line in the inbox reflects what the sender actually chose.
 - Speaking has its own topic so invitations have an obvious place, but the intro doesn't advertise talks. Collaboration was dropped; side projects come in under "Just saying hi".
-- The intro speaks to leads: "Open to freelance and consulting work, especially with teams here in New Zealand."
+- The intro speaks to leads in first person: "I'm open to freelance and consulting work, especially with teams here in New Zealand." It stops there; the message placeholder asks what they're working on (revised 2026-10-21).
 - The message placeholder is "A bit about what you're building and where it's at."
 
 ## Open
