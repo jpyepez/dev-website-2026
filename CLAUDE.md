@@ -13,8 +13,8 @@ Personal portfolio site (jpyepez.com) — Astro 5 static site, Tailwind + DaisyU
 
 IMPORTANT: Before starting a task, identify which of these files are relevant and read them.
 
-- [Domain glossary — brand, theses, cadence, goals](./.work/CONTEXT.md) — read for any content, copy, scope, or feature decision
-- [Active PRDs](./.work/prds/) — read the relevant PRD before implementing a feature
+- [Domain glossary — brand, theses, cadence, goals](./CONTEXT.md) — read for any content, copy, scope, or feature decision
+- Active PRDs are GitHub issues labelled `ready` that have sub-issues — read the relevant one (`gh issue view <n>`) before implementing a feature
 - [Architecture](./docs/architecture.md) — folder layout, content model, planned routes
 - [Git workflow](./docs/git-workflow.md) — commit format, branching
 
@@ -22,15 +22,15 @@ IMPORTANT: Before starting a task, identify which of these files are relevant an
 
 ### Issue tracker
 
-Issues and specs are local markdown files under `.work/`. See `.work/agents/issue-tracker.md`.
+Issues and specs (PRDs) are GitHub issues, managed with `gh`. A PRD is a parent issue with its tickets as sub-issues. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
-Default five triage roles; `ready-for-agent` is written as `ready`. See `.work/agents/triage-labels.md`.
+Default five triage roles; `ready-for-agent` is written as `ready`. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
-Glossary `.work/CONTEXT.md`, ADRs `.work/adr/`, out-of-scope `.work/out-of-scope/`, all writable. See `.work/agents/domain.md`.
+Glossary `CONTEXT.md`, ADRs `docs/adr/`, out-of-scope `docs/out-of-scope/`, all writable. See `docs/agents/domain.md`.
 
 ### Notes
 

@@ -1,5 +1,5 @@
 // src/features/uses/tools.ts
-// What earns a spot is defined under "Uses Page" in .work/CONTEXT.md.
+// What earns a spot is defined under "Uses Page" in CONTEXT.md.
 
 export interface ToolLink {
   name: string;

@@ -15,7 +15,7 @@ Astro 5 static site, server-rendered at build time, deployed to Vercel.
 
 ## Content model
 
-Today the site is hand-rolled pages only. Per `.work/prds/site-blog-lab.md`, two new surfaces are planned:
+Today the site is hand-rolled pages only. Per the [site-blog-lab PRD](https://github.com/jpyepez/dev-website-2026/blob/94a71d1/.work/prds/site-blog-lab.md) (archived; removed from the tree when specs moved to GitHub issues), two new surfaces are planned:
 
 - **Blog** — Astro content collection at `src/content/blog/`, MDX per post, Zod-validated frontmatter. Index + `[...slug]` routes under `src/pages/blog/`.
 - **Lab** — page-per-piece under `src/pages/lab/`. Each piece imports its own dependencies. A small ordered list in `src/features/lab/pieces.ts` powers the index. A shared `LabFrame.astro` layout gives each piece a consistent writeup + demo frame.

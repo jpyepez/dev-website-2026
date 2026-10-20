@@ -45,7 +45,8 @@ PR titles use the same format; with squash merges the PR title becomes the commi
 
 ## What gets committed
 
-- `.work/prds/`, `.work/issues/`, `.work/adr/` and `.work/CONTEXT.md` — committed (project decisions live with the code).
-- `.work/notes/` — gitignored (scratch only).
+- `CONTEXT.md`, `docs/adr/` and `docs/out-of-scope/` — committed (project decisions live with the code).
+- PRDs and tickets — not committed; they are GitHub issues (see `docs/agents/issue-tracker.md`).
+- `.work/notes/` — gitignored (private scratch only).
 - `.env*` — gitignored.
 - `dist/`, `node_modules/`, `.astro/`, `.vercel/`, `.vscode/` — gitignored.
