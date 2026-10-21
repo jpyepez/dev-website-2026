@@ -9,7 +9,7 @@ import { join, resolve } from "node:path";
 const NAME = "JP Yepez";
 const ROLE = "Senior Product Engineer";
 const TAGLINE = "Writing about senior engineering, AI, and the visual work it’s bringing within reach.";
-const CAPTION = "Elevation field, set in type.";
+const CAPTION = "Terrain, set in type";
 const URL_TEXT = "jpyepez.com";
 
 // The pointer rests here to raise the ground, then clicks to start a ripple that is
@@ -75,8 +75,7 @@ try {
   .surface { position: relative; flex: 1; border: 1px solid var(--base-300); border-radius: 2px; background: var(--base-200); }
   canvas { position: absolute; inset: 14px; width: calc(100% - 28px); height: calc(100% - 28px); font-family: "Geist Mono Variable", monospace; }
   .corner { position: absolute; width: 10px; height: 10px; border: 0 solid var(--primary); }
-  figcaption { font-size: 14px; color: color-mix(in oklch, var(--content) 70%, transparent); }
-  figcaption .mono { font-size: 11px; color: var(--primary); margin-right: 8px; }
+  figcaption { font-size: 14px; font-weight: 500; }
 </style></head><body>
   <section class="text">
     <div style="margin-top: auto">
@@ -94,7 +93,7 @@ try {
       <span class="corner" style="bottom:-1px;left:-1px;border-bottom-width:1px;border-left-width:1px"></span>
       <span class="corner" style="bottom:-1px;right:-1px;border-bottom-width:1px;border-right-width:1px"></span>
     </div>
-    <figcaption><span class="mono">Fig. 01</span>${CAPTION}</figcaption>
+    <figcaption>${CAPTION}</figcaption>
   </figure>
   <script>${script}</script>
 </body></html>`;

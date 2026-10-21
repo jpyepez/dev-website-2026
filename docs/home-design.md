@@ -4,7 +4,7 @@ Decided 2026-10-02 after three rounds of side-by-side prototypes (`/proto/home`,
 
 ## Direction
 
-A split layout. The left column has the name, role and tagline, then the bio and socials. The right column is a framed figure ("Fig. 01") showing a terrain field drawn in monospace characters. The copy stays engineer-first; the figure shows the visual craft instead of describing it.
+A split layout. The left column has the name, role and tagline, then the bio and socials. The right column is the visual hero, a framed piece named **Terrain**: a terrain field drawn in monospace characters. The copy stays engineer-first; the figure shows the visual craft instead of describing it.
 
 ## Palette and type
 
@@ -34,6 +34,22 @@ A split layout. The left column has the name, role and tagline, then the bio and
 - Touch: press and hold raises the hill under the finger and it follows sideways drags; lifting lowers it. A 120ms hold delay stops a scroll that starts on the figure from flashing a hill. A quick tap sends a ripple.
 - The header drops its "JP Yepez" wordmark on the home page, where the h1 already says it; the h1's cap height lines up with the figure's top edge.
 - Drawing copies glyphs from a pre-rendered atlas. Measured on an M-series Mac at 8px glyphs (~7,700 cells): 32 ms/frame with per-glyph `fillText`, 3.8 ms/frame with the atlas while drifting.
+
+## Caption
+
+Decided 2026-10-21 after a prototype round ([#15](https://github.com/jpyepez/dev-website-2026/issues/15)): "Legend, quiet". One row under the frame, the two halves at opposite ends on a shared baseline; on narrow screens the key wraps under the name.
+
+- Left: the piece's name, `Terrain, set in type`, in Geist at small size, medium weight, full-strength text.
+- Right: a controls key in the mono label style, muted, with each action word in teal and pairs split by a middle dot. Fine pointer: `hover raise · click ripple`. Touch: `hold raise · tap ripple`.
+- No numbered marker. Pieces are named, not numbered like academic figures (see Visual Hero in the glossary).
+
+Rejected:
+
+- **Fig. 01** (the original): read as a numbered academic figure.
+- **Live:** a teal dot plus "Live" felt like a streaming badge.
+- **Plate:** a two-line gallery label; the instructions faded into the background.
+- **Legend:** keycap boxes looked like app UI and competed with the bio's mono links.
+- **Plate + keys:** the tallest option, with boxes under a quiet title.
 
 ## Rejected
 
