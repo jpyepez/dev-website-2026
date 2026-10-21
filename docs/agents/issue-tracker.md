@@ -9,7 +9,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **List issues**: `gh issue list --state open --json number,title,body,labels,comments --jq '[.[] | {number, title, body, labels: [.labels[].name], comments: [.comments[].body]}]'` with appropriate `--label` and `--state` filters.
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
-- **Close**: `gh issue close <number> --comment "..."`
+- **Close**: see "When a skill says close or resolve a ticket" below.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 
@@ -35,7 +35,9 @@ Run `gh issue view <number> --comments`.
 
 ## When a skill says "close" or "resolve" a ticket
 
-Close the issue with a comment: `gh issue close <number> --comment "..."`.
+A merged PR closes the ticket. Open a PR to `main` with `Closes #<n>` in the description for each ticket it finishes; the issue stays open until that PR merges, even when the work is finished on a branch.
+
+Work that ships no code (wontfix, duplicates, pathfinder resolves, a parent PRD whose sub-issues are all closed) closes directly: `gh issue close <number> --comment "..."`.
 
 ## Commit references
 
@@ -46,7 +48,7 @@ Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on t
 - **Labels**: the triage roles use the strings in `triage-labels.md`. A closed issue is done; there is no `done` label.
 - **A PRD is a parent issue.** The issue body is the spec, labelled `ready`. Its tickets are GitHub sub-issues of it, added in dependency order (blockers first): `gh api --method POST repos/<owner>/<repo>/issues/<parent>/sub_issues -F sub_issue_id=<child-db-id>`, where `<child-db-id>` is the child's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`). Blocking between tickets uses native issue dependencies, as described under Wayfinding below.
 - **Promote, don't duplicate.** When a PRD comes out of an existing issue (usually an inbox item after triage), replace that issue's body with the PRD instead of opening a new issue. First post the original body as a comment headed `Original note:` so it stays readable. Retitle the issue if the scope changed.
-- **PRs close tickets**: put `Closes #<n>` in the PR description for each ticket it finishes. Close the parent PRD issue once all its sub-issues are closed.
+- **PRs close tickets**: see "When a skill says close or resolve a ticket" above.
 - **Claim before working**: before implementing an issue, assign it with `gh issue edit <n> --add-assignee @me` and set its board Status to In progress (below).
 - **Board**: the [dev-website-2026 project](https://github.com/users/jpyepez/projects/1) is one board with a column per Status: Inbox, Ready, In progress, Done. GitHub's built-in workflows add new issues to Inbox and move closed issues to Done. Keep Status in step with the triage label whenever you change one:
 
