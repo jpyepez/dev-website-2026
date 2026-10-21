@@ -1,4 +1,4 @@
-# CONTEXT
+# jpyepez.com
 
 Shared domain glossary for the jpyepez.com personal site.
 
