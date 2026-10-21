@@ -9,7 +9,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **List issues**: `gh issue list --state open --json number,title,body,labels,comments --jq '[.[] | {number, title, body, labels: [.labels[].name], comments: [.comments[].body]}]'` with appropriate `--label` and `--state` filters.
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
-- **Close**: `gh issue close <number> --comment "..."`
+- **Close**: only for work that ships no code (wontfix, duplicate, pathfinder resolve): `gh issue close <number> --comment "..."`. Code work closes through its PR (see below).
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 
@@ -35,7 +35,9 @@ Run `gh issue view <number> --comments`.
 
 ## When a skill says "close" or "resolve" a ticket
 
-Close the issue with a comment: `gh issue close <number> --comment "..."`.
+Don't close the issue yourself. Open a PR to `main` with `Closes #<n>` in the description; merging it closes the issue. Leave the issue open until then, even when the work is done on a branch.
+
+Use `gh issue close <number> --comment "..."` only for work that ships no code: wontfix, duplicates, pathfinder resolves.
 
 ## Commit references
 
