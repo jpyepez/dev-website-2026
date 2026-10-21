@@ -5,7 +5,7 @@ How the engineering skills should consume this repo's domain documentation when 
 ## Where they live
 
 - **Glossaries** (read every one, in this order):
-  - `CONTEXT.md`: writable
+  - `GLOSSARY.md`: writable
 - **ADRs**: `docs/adr/`: writable
 - **Out of scope**: `docs/out-of-scope/`: writable
 - **Notes**: `.work/notes/`
