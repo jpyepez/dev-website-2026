@@ -158,3 +158,10 @@ reach for today, even if no current project uses them. Written for other
 developers: a note skips what the tool is and says why it's here. No desk
 photo or figure (2026-10-04).
 _Avoid_: setup page, stack page
+
+### Visual Hero
+The interactive piece the home page opens on, beside the name and bio (see
+[[site-framing]]). It is a role, not a piece: the current hero is **Terrain**,
+terrain drawn in type that drifts and answers the pointer. Pieces are named,
+never numbered like academic figures (2026-10-21).
+_Avoid_: Fig. 01, figure, specimen
