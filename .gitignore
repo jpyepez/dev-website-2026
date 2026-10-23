@@ -27,9 +27,6 @@ pnpm-debug.log*
 .vscode/
 .vercel
 
-# local work scratch
-.work/notes/
-
 # Claude Code: personal settings and dmux pane scaffolding
 .claude/settings.local.json
 .claude/dmux/

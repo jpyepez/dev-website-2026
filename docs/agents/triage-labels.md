@@ -12,6 +12,8 @@ The skills speak in terms of five canonical triage roles. This file maps those r
 
 When a skill mentions a role (e.g. "apply the AFK-ready triage label"), use the corresponding label string from this table.
 
+Issues labelled `notes` are running notes, not requests: `/triage-issues` skips them.
+
 ## Categories
 
 Every triaged issue carries exactly one category label. This repo uses three:

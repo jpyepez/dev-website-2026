@@ -34,4 +34,4 @@ Glossary `GLOSSARY.md`, ADRs `docs/adr/`, out-of-scope `docs/out-of-scope/`, all
 
 ### Notes
 
-Scratch notes go in `.work/notes/`.
+Running notes are GitHub issues labelled `notes`, added to as comments. Post ideas live in the pinned "Post ideas" issue.

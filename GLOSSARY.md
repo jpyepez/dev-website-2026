@@ -37,10 +37,10 @@ Committed publishing rhythm (2026-05-15):
 
 ### Capture System
 The post pipeline depends on a daily capture habit, not on weekly bursts of
-inspiration. Convention: `.work/notes/post-ideas.md` (gitignored). Every time
+inspiration. Convention: the pinned "Post ideas" GitHub issue. Every time
 the user notices something at work that fits [[theses]] — an AI code review
 catch, a junior over-trusting Cursor, a visual thing shipped in an afternoon
-that would've taken a week — one line goes in the file. LinkedIn posts are
+that would've taken a week — one comment goes on the issue. LinkedIn posts are
 one observation expanded; blog posts are one observation deepened.
 
 Sequencing decision (2026-05-15): the user could not surface a specific recent

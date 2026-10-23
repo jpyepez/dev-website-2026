@@ -47,6 +47,5 @@ PR titles use the same format; with squash merges the PR title becomes the commi
 
 - `GLOSSARY.md`, `docs/adr/` and `docs/out-of-scope/` — committed (project decisions live with the code).
 - Specs and tickets — not committed; they are GitHub issues (see `docs/agents/issue-tracker.md`).
-- `.work/notes/` — gitignored (private scratch only).
 - `.env*` — gitignored.
 - `dist/`, `node_modules/`, `.astro/`, `.vercel/`, `.vscode/` — gitignored.
