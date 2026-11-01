@@ -69,7 +69,7 @@ Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on t
 - **Promote, don't duplicate.** When a spec comes out of an existing issue (usually an inbox item after triage), replace that issue's body with the spec instead of opening a new issue. First post the original body as a comment headed `Original note:` so it stays readable. Retitle the issue if the scope changed.
 - **PRs close tickets**: see "When a skill says close or resolve a ticket" above.
 - **Claim before working**: before implementing an issue, assign it with `gh issue edit <n> --add-assignee @me` and set its board Status to In progress (below).
-- **Board**: the [dev-website-2026 project](https://github.com/users/jpyepez/projects/1) is one board with a column per Status: Inbox, Ready, In progress, HITL (once the owner adds it; until then the script rejects it), Done. GitHub's built-in workflows add new issues to Inbox and move closed issues to Done. Keep Status in step with the triage label whenever you change one:
+- **Board**: the [dev-website-2026 project](https://github.com/users/jpyepez/projects/1) is one board with a column per Status: Inbox, Ready, In progress, HITL, Done. GitHub's built-in workflows add new issues to Inbox and move closed issues to Done. Keep Status in step with the triage label whenever you change one:
 
   | Change | Status |
   | --- | --- |
