@@ -42,7 +42,7 @@ Each case checks:
 | `bun run test` | `bun test src scripts` | every unit test. One file: `bun test src/features/home/noise.test.ts` |
 | `bun run test:e2e` | Playwright | the smoke suite. Locally it builds and serves on 4174, unless a server is already up on 4174: then it tests that server and builds nothing, so stop it first if the build is stale. One test: `bunx playwright test -g "contact loads at 390"` |
 
-CI (`.github/workflows/ci.yml`) runs lint, typecheck, test, build and e2e on every PR to `main` and every push to `main`.
+CI (`.github/workflows/ci.yml`) runs lint, typecheck, test, build and e2e on every PR to `main` and every push to `main`. A separate `actionlint` job lints the workflow files with a pinned actionlint release, which also runs shellcheck on every `run:` block. Locally: `actionlint`.
 
 ## Conventions
 
