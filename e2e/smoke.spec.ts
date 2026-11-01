@@ -22,7 +22,7 @@ const widths = [1280, 390];
 // status already, so only that one message is ignored, and only for the page's own URL.
 const isOwn404 = (text: string, url: string, path: string, status: number) =>
   status === 404 &&
-  new URL(url).pathname === path &&
+  new URL(url, "http://localhost").pathname === path &&
   text.includes("status of 404");
 
 const collectErrors = (page: Page, path: string, status: number) => {
@@ -46,9 +46,10 @@ for (const route of routes) {
       const response = await page.goto(route.path, { waitUntil: "networkidle" });
 
       expect(response?.status()).toBe(route.status);
-      await expect(page.getByRole("heading", { level: 1, name: route.heading })).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1, name: route.heading, exact: true })).toBeVisible();
       if (route.name === "contact") {
         await expect(page.getByRole("textbox", { name: "Email" })).toBeVisible();
+        await expect(page.getByRole("textbox", { name: "Message" })).toBeVisible();
         await expect(page.getByRole("button", { name: "Send message" })).toBeVisible();
       }
       expect(errors).toEqual([]);
