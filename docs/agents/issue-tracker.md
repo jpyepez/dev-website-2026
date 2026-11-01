@@ -42,7 +42,7 @@ Work that ships no code (wontfix, duplicates, pathfinder resolves, a parent spec
 
 ## Hand-back list
 
-An agent doesn't build these changes. It hands them back to the owner. This is the only copy of the list: the Triage `ready` bar and the Implement hand-back check will both point here, so link to it rather than repeating it.
+An agent doesn't build these changes. It hands them back to the owner. This is the only copy of the list: the [`ready` bar](triage-labels.md#the-ready-bar) points here, and so will the Implement hand-back check, so link to it rather than repeating it.
 
 - Copy or voice changes
 - Blog posts
@@ -73,10 +73,13 @@ Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on t
 
   | Change | Status |
   | --- | --- |
-  | `needs-triage` or `needs-info` applied | Inbox |
-  | `ready` or `ready-for-human` applied | Ready |
+  | `needs-triage` applied | Inbox |
+  | `needs-info`, `ready-for-human` or `wontfix` applied | HITL |
+  | `ready` applied | Ready |
   | Issue claimed | In progress |
   | Work an agent handed back | HITL |
+
+  HITL is everything waiting on the owner: questions to answer, work to build by hand, a `wontfix` to confirm and close, and work an agent handed back. Ready holds only what an agent may build (see [the `ready` bar](triage-labels.md#the-ready-bar)).
 
   Set it with `bun run board-status <n> <column>`, e.g. `bun run board-status 29 In progress`. The script adds the issue to the board if it isn't there, looks the column up by name (case doesn't matter) and fails, listing the valid names, if the board has no such column.
 - **Not issues**: glossary, ADRs and out-of-scope records stay as files (see `domain.md`).
