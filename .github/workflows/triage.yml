@@ -50,8 +50,7 @@ jobs:
             case $label in
               # Running notes, spec parents and planning maps keep the labels they have.
               notes | spec | pathfinder:*) skip=true ;;
-              # Opened already triaged (say, a ticket a session filed as `ready`): don't
-              # second-guess it. A dispatch still re-triages it.
+              # Opened already triaged: don't second-guess it, but a dispatch re-triages.
               ready | needs-info | ready-for-human | wontfix)
                 [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || skip=true
                 ;;
