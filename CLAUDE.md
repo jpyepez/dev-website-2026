@@ -17,6 +17,8 @@ IMPORTANT: Before starting a task, identify which of these files are relevant an
 - Active specs are GitHub issues labelled `ready` that have sub-issues — read the relevant one (`gh issue view <n> --json number,title,body,labels,comments`) before implementing a feature
 - [Architecture](./docs/architecture.md) — folder layout, content model, planned routes
 - [Git workflow](./docs/git-workflow.md) — commit format, branching
+- [Testing strategy](./docs/testing-strategy.md) — read before writing or changing a test, or adding a route
+- [Browser verification](./docs/browser-verification.md) — read before handing back or opening a PR for a change visible on the site
 
 ## Agent skills
 
