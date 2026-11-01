@@ -42,7 +42,7 @@ Work that ships no code (wontfix, duplicates, pathfinder resolves, a parent spec
 
 ## Hand-back list
 
-An agent doesn't build these changes. It hands them back to the owner. This is the only copy of the list: the Triage `ready` bar and the Implement hand-back check both point here, so link to it rather than repeating it.
+An agent doesn't build these changes. It hands them back to the owner. This is the only copy of the list: the Triage `ready` bar and the Implement hand-back check will both point here, so link to it rather than repeating it.
 
 - Copy or voice changes
 - Blog posts
