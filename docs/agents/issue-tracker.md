@@ -65,24 +65,20 @@ Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on t
 ## Repo conventions
 
 - **Labels**: the triage roles use the strings in `triage-labels.md`. A closed issue is done; there is no `done` label.
-- **A spec is a parent issue.** The issue body is the spec, labelled `ready`. Its tickets are GitHub sub-issues of it, added in dependency order (blockers first): `gh api --method POST repos/<owner>/<repo>/issues/<parent>/sub_issues -F sub_issue_id=<child-db-id>`, where `<child-db-id>` is the child's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`). Blocking between tickets uses native issue dependencies, as described under Wayfinding below.
+- **A spec is a parent issue.** The issue body is the spec, labelled `ready` and `spec`. Its tickets are GitHub sub-issues of it, added in dependency order (blockers first): `gh api --method POST repos/<owner>/<repo>/issues/<parent>/sub_issues -F sub_issue_id=<child-db-id>`, where `<child-db-id>` is the child's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`). Blocking between tickets uses native issue dependencies, as described under Wayfinding below.
 - **Promote, don't duplicate.** When a spec comes out of an existing issue (usually an inbox item after triage), replace that issue's body with the spec instead of opening a new issue. First post the original body as a comment headed `Original note:` so it stays readable. Retitle the issue if the scope changed.
 - **PRs close tickets**: see "When a skill says close or resolve a ticket" above.
 - **Claim before working**: before implementing an issue, assign it with `gh issue edit <n> --add-assignee @me` and set its board Status to In progress (below).
-- **Board**: the [dev-website-2026 project](https://github.com/users/jpyepez/projects/1) is one board with a column per Status: Inbox, Ready, In progress, Done. GitHub's built-in workflows add new issues to Inbox and move closed issues to Done. Keep Status in step with the triage label whenever you change one:
+- **Board**: the [dev-website-2026 project](https://github.com/users/jpyepez/projects/1) is one board with a column per Status: Inbox, Ready, In progress, HITL (once the owner adds it; until then the script rejects it), Done. GitHub's built-in workflows add new issues to Inbox and move closed issues to Done. Keep Status in step with the triage label whenever you change one:
 
   | Change | Status |
   | --- | --- |
-  | `needs-triage` or `needs-info` applied | Inbox (`f75ad846`) |
-  | `ready` or `ready-for-human` applied | Ready (`fb0b00b5`) |
-  | Issue claimed | In progress (`47fc9ee4`) |
+  | `needs-triage` or `needs-info` applied | Inbox |
+  | `ready` or `ready-for-human` applied | Ready |
+  | Issue claimed | In progress |
+  | Work an agent handed back | HITL |
 
-  Set it with two commands. `item-add` returns the issue's card, adding it first if it isn't on the board yet:
-
-  ```sh
-  item=$(gh project item-add 1 --owner jpyepez --url https://github.com/jpyepez/dev-website-2026/issues/<n> --format json --jq .id)
-  gh project item-edit --project-id PVT_kwHOAJXAFM4Bn-u2 --id "$item" --field-id PVTSSF_lAHOAJXAFM4Bn-u2zhmg3qw --single-select-option-id <option-id>
-  ```
+  Set it with `bun run board-status <n> <column>`, e.g. `bun run board-status 29 In progress`. The script adds the issue to the board if it isn't there, looks the column up by name (case doesn't matter) and fails, listing the valid names, if the board has no such column.
 - **Not issues**: glossary, ADRs and out-of-scope records stay as files (see `domain.md`).
 
 ## Wayfinding operations
