@@ -40,6 +40,24 @@ A merged PR closes the ticket. Open a PR to `main` with `Closes #<n>` in the des
 
 Work that ships no code (wontfix, duplicates, pathfinder resolves, a parent spec whose sub-issues are all closed) closes directly: `gh issue close <number> --comment "..."`.
 
+## Hand-back list
+
+An agent doesn't build these changes. It hands them back to the owner. This is the only copy of the list: the Triage `ready` bar and the Implement hand-back check both point here, so link to it rather than repeating it.
+
+- Copy or voice changes
+- Blog posts
+- The glossary (`GLOSSARY.md`)
+- Design docs (`docs/*-design.md`)
+- ADRs (`docs/adr/`)
+- Out-of-scope records (`docs/out-of-scope/`)
+- Vercel config
+- The Astro config (`astro.config.mjs`)
+- The content schema (`src/content.config.ts`)
+- Anything under `.github/`
+- New dependencies
+- Anything that changes what the home page leads with (see [ADR-0001](../adr/0001-home-leads-with-visual-hero.md))
+- The OG image (`public/og.png` and `scripts/og.ts`)
+
 ## Commit references
 
 Reference the issue as `#<number>` in the commit message (e.g. `Closes #42` on the final commit).

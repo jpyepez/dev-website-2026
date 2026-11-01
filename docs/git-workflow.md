@@ -34,6 +34,7 @@ PR titles use the same format; with squash merges the PR title becomes the commi
 - `main` is the only long-lived branch. Don't commit to it directly.
 - One short-lived branch per piece of work, named by type: `feat/<name>`, `fix/<name>`, `docs/<name>`, `chore/<name>`. Worktree branches (e.g. from dmux) are fine as they are.
 - `exp/<name>` for spikes or risky refactors that might be thrown away. These don't need a PR unless they turn into real work.
+- `auto/issue-<n>` for a bot working on issue `#<n>`. The Implement workflow finds a bot's PR by this branch name. Bot PR titles use the same conventional-commit format as everyone else, since they become the squash commit on `main`.
 
 ## Pull requests
 
