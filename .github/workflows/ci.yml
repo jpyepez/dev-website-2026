@@ -22,6 +22,8 @@ jobs:
       # Also runs shellcheck (preinstalled on the runner) on every run: block.
       - run: bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash) 1.7.12
       - run: ./actionlint -color
+      # Deliberate error to prove the job goes red: unquoted variable (SC2086).
+      - run: ls $RUNNER_TEMP/*
 
   # The required-check ruleset on main refers to this job by its name: keep it stable.
   checks:
