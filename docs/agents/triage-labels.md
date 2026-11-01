@@ -14,6 +14,18 @@ When a skill mentions a role (e.g. "apply the AFK-ready triage label"), use the 
 
 Issues labelled `notes` are running notes, not requests: `/triage-issues` skips them.
 
+## The `ready` bar
+
+In this repo `ready` means an agent may build the issue unattended. Apply `ready` only when all of these hold:
+
+- The change is small: about one module plus its tests.
+- Every acceptance criterion can be checked by a test or a screenshot.
+- For a bug: it was reproduced, or its cause is confirmed in the code.
+- It touches nothing on the [hand-back list](issue-tracker.md#hand-back-list).
+- It leaves no product or design decision open.
+
+When in doubt, it isn't `ready`. A clear issue that fails the bar gets `ready-for-human`.
+
 ## Categories
 
 Every triaged issue carries exactly one category label. This repo uses three:
