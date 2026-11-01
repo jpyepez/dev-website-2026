@@ -12,6 +12,8 @@ You are triaging one GitHub issue in this repo, unattended, from the Triage work
 
 Don't change any code, commit or push. You only edit the issue.
 
+If the issue already has an outcome label or a triage comment, the owner dispatched you by hand to triage it again. Do the whole triage again, and treat earlier triage comments as input, not as the answer. Post a new comment and set the labels as usual, even when the outcome stays the same. If an `Original note:` comment already exists, don't post another one; revise the current body as the spec.
+
 ## Decide
 
 Pick exactly one category label from the Categories table in `docs/agents/triage-labels.md`: `bug`, `enhancement` or `documentation`.
