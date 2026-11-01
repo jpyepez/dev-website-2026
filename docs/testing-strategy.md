@@ -40,7 +40,7 @@ Each case checks:
 | `bun run lint` | oxlint, default rules | lint across the repo |
 | `bun run typecheck` | `astro check` | types in `.astro` and `.ts` files |
 | `bun run test` | `bun test src scripts` | every unit test. One file: `bun test src/features/home/noise.test.ts` |
-| `bun run test:e2e` | Playwright | the smoke suite. Locally it builds, then serves on 4174, and reuses a server already on 4174. One test: `bunx playwright test -g "contact loads at 390"` |
+| `bun run test:e2e` | Playwright | the smoke suite. Locally it builds and serves on 4174, unless a server is already up on 4174: then it tests that server and builds nothing, so stop it first if the build is stale. One test: `bunx playwright test -g "contact loads at 390"` |
 
 CI (`.github/workflows/ci.yml`) runs lint, typecheck, test, build and e2e on every PR to `main` and every push to `main`.
 

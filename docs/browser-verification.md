@@ -4,6 +4,8 @@ Tests show the code does what the tests check; this shows the site does what the
 
 The site has one theme, dark (`data-theme="night"` on `<html>`), so every screenshot is dark. The contact form is checked for rendering only: never type into it and press Send, never submit it.
 
+This walk runs before the PR is reviewed. It doesn't replace the check in [git-workflow.md](./git-workflow.md#pull-requests), where the owner looks at the Vercel preview on a real phone before merging.
+
 Keep every script, screenshot and comment file out of the repo: in the session's scratchpad, or `$RUNNER_TEMP` on a CI runner. Call that folder `<out>`.
 
 ## Steps
@@ -11,7 +13,7 @@ Keep every script, screenshot and comment file out of the repo: in the session's
 1. **Serve the build.** `bun run build`, then `bun run preview --port 4174 --strictPort` in the background. Done when `http://localhost:4174/` answers 200. The smoke suite uses the same port and reuses a running server, so stop this one before `bun run test:e2e` if you rebuild.
 2. **Open a clean page.** Chrome DevTools MCP `new_page` with an `isolatedContext`, so the user's own browser data stays untouched.
    - No DevTools MCP (a CI runner), or DevTools says the browser profile is already in use: take the [headless route](#headless-route) for steps 3 to 5 instead. Leave a browser another session owns running.
-3. **Walk the routes.** Every route the change touches, plus each acceptance criterion of the ticket or the bug's repro steps. The routes are `/`, `/uses`, `/contact`, `/blog`, `/lab`, any post or piece the change touches (`/blog/<slug>`, `/lab/<slug>`), and an unknown path such as `/no-such-page` for the 404 page. After each navigation, wait for the page's `h1` before a snapshot or screenshot; the home terrain canvas draws after load. Done when every route and criterion has been walked.
+3. **Walk the routes.** Every route the change touches, plus each acceptance criterion of the ticket or the bug's repro steps. The routes are `/`, `/uses`, `/contact`, `/blog`, `/lab`, any post the change touches (`/blog/<slug>`; lab pieces have no route of their own yet), and an unknown path such as `/no-such-page` for the 404 page. After each navigation, wait for the page's `h1` before a snapshot or screenshot; the home terrain canvas draws after load. Done when every route and criterion has been walked.
 4. **Look at it.** Screenshot each walked route at desktop (1280×800) and phone (390×844), full page, and read every screenshot. Done when each one shows what the ticket describes and nothing is cut off, overlapping or unstyled.
 5. **Check the console.** `list_console_messages` on each route. Done when every error and warning has been read and goes in the report. Errors from `/_vercel/insights/` are expected on the preview (Vercel serves analytics in production only) and so is the 404 page's own 404; note them as such.
 6. **Post the screenshots.** Once the PR is open, name the files in walk order (`01-home-1280.png`, `02-home-390.png`, …), write the comment body to `<out>/comment.md` and post it with `gh pr comment <pr> --body-file <out>/comment.md`, plus one `--attach '<out>/<file>.png#<alt>'` per screenshot (gh 2.103 or later; up to 50 files). gh uploads each file and points its reference at the upload. The body holds:
