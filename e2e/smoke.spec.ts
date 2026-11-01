@@ -1,7 +1,10 @@
 import { expect, test } from "@playwright/test";
 
-// Vercel serves the Web Analytics script in production only; `astro preview` 404s it.
-const isVercelAnalytics = (url: string) => new URL(url, "http://x").pathname.startsWith("/_vercel/insights/");
+// Vercel serves the Web Analytics script in production only, so `astro preview` 404s it.
+// This ignores every console error from that script, not only the 404.
+// The URL can be relative; the base only lets `new URL` parse it.
+const isVercelAnalytics = (url: string) =>
+  new URL(url, "http://localhost").pathname.startsWith("/_vercel/insights/");
 
 test("home loads at 1280 with its heading and no console or page errors", async ({ page }) => {
   const errors: string[] = [];

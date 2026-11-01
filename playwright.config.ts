@@ -12,7 +12,8 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: `bun run build && bun run preview --port ${port} --strictPort`,
+    // CI builds in its own step; locally, build first so a clean checkout works.
+    command: `${process.env.CI ? "" : "bun run build && "}bun run preview --port ${port} --strictPort`,
     url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
