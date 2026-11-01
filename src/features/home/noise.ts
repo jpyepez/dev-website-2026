@@ -20,7 +20,7 @@ export function noise(x: number, y: number, seed: number) {
 export function noise3(x: number, y: number, z: number, seed: number) {
   const zi = Math.floor(z), zf = z - zi;
   const w = zf * zf * (3 - 2 * zf);
-  const a = noise(x, y + (zi + 1) * 1013, seed);
+  const a = noise(x, y + zi * 1013, seed);
   const b = noise(x, y + (zi + 1) * 1013, seed);
   // Blending two independent values shrinks their spread mid-way, which would make the
   // terrain flatten and re-sharpen on a loop. Rescale around the 0.5 mean to hold contrast.
