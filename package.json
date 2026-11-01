@@ -7,7 +7,11 @@
     "build": "astro build",
     "og": "bun scripts/og.ts",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "oxlint",
+    "typecheck": "astro check",
+    "test": "bun test src",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -26,6 +30,8 @@
     "zod": "^4"
   },
   "devDependencies": {
-    "@types/bun": "^1.4.2"
+    "@playwright/test": "^1.64.1",
+    "@types/bun": "^1.4.2",
+    "oxlint": "^1.90.0"
   }
 }

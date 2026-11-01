@@ -28,6 +28,16 @@ function noise3(x: number, y: number, z: number, seed: number) {
   return 0.5 + (lerp - 0.5) / Math.sqrt((1 - w) * (1 - w) + w * w);
 }
 
+export function fbm(x: number, y: number, octaves = 3) {
+  let sum = 0, amp = 0.55, freq = 1;
+  for (let o = 0; o < octaves; o++) {
+    sum += amp * noise(x * freq, y * freq, o + 7);
+    amp *= 0.5;
+    freq *= 2.03;
+  }
+  return sum;
+}
+
 export function fbm3(x: number, y: number, z: number, octaves = 3) {
   let sum = 0, amp = 0.55, freq = 1;
   for (let o = 0; o < octaves; o++) {
