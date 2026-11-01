@@ -1,4 +1,4 @@
-// Value noise for the home terrain figure. fbm3's z = 0 slice equals fbm,
+// Value noise for the home terrain figure. noise3's z = 0 slice equals noise,
 // so the resting frame doesn't change when drift starts.
 
 function hash(x: number, y: number, seed: number) {
@@ -7,7 +7,7 @@ function hash(x: number, y: number, seed: number) {
   return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
 }
 
-function noise(x: number, y: number, seed: number) {
+export function noise(x: number, y: number, seed: number) {
   const xi = Math.floor(x), yi = Math.floor(y);
   const xf = x - xi, yf = y - yi;
   const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
@@ -17,7 +17,7 @@ function noise(x: number, y: number, seed: number) {
 }
 
 // Each integer z reads an unrelated, far-away patch of the 2D noise.
-function noise3(x: number, y: number, z: number, seed: number) {
+export function noise3(x: number, y: number, z: number, seed: number) {
   const zi = Math.floor(z), zf = z - zi;
   const w = zf * zf * (3 - 2 * zf);
   const a = noise(x, y + zi * 1013, seed);
