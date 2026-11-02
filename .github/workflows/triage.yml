@@ -38,14 +38,17 @@ jobs:
       ISSUE: ${{ github.event.issue.number || inputs.issue }}
       OWNER: ${{ github.repository_owner }}
     steps:
-      - name: Skip issues not opened by the owner, notes, specs, pathfinder and triaged issues
+      - name: Skip closed issues, issues not opened by the owner, notes, specs, pathfinder and triaged issues
         id: check
         run: |
           author=$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json author --jq .author.login)
+          state=$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json state --jq .state)
           labels=$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json labels --jq '[.labels[].name] | join(" ")')
           skip=false
           # Someone else's issue: triaging it would spend the owner's budget on their text.
           [ "$author" = "$OWNER" ] || skip=true
+          # A closed issue is done: re-triaging it would move its card off Done.
+          [ "$state" = OPEN ] || skip=true
           for label in $labels; do
             case $label in
               # Running notes, spec parents and planning maps keep the labels they have.
@@ -57,7 +60,7 @@ jobs:
             esac
           done
           echo "skip=$skip" >> "$GITHUB_OUTPUT"
-          echo "#$ISSUE by $author, labels: ${labels:-none}, skip: $skip"
+          echo "#$ISSUE by $author, $state, labels: ${labels:-none}, skip: $skip"
 
       - if: steps.check.outputs.skip == 'false'
         uses: actions/checkout@v7
