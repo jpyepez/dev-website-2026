@@ -12,11 +12,11 @@ The skills speak in terms of five canonical triage roles. This file maps those r
 
 When a skill mentions a role (e.g. "apply the AFK-ready triage label"), use the corresponding label string from this table.
 
-Issues labelled `notes` are running notes, not requests: `/triage-issues` skips them. The [Triage workflow](issue-tracker.md#automation) skips both `notes` and `spec` issues.
+Issues labelled `notes` are running notes, not requests: `/triage-issues` skips them. The [Triage workflow](issue-tracker.md#automation) skips both `notes` and `spec` issues, and the Implement workflow skips `spec` issues.
 
 ## The `ready` bar
 
-In this repo `ready` means an agent may build the issue unattended. Apply `ready` only when all of these hold:
+In this repo `ready` means an agent may build the issue unattended. Applying it starts the [Implement workflow](issue-tracker.md#automation), which builds the issue at once. Apply `ready` only when all of these hold:
 
 - The change is small: about one module plus its tests.
 - Every acceptance criterion can be checked by a test or a screenshot.

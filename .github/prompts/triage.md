@@ -20,7 +20,7 @@ Pick exactly one category label from the Categories table in `docs/agents/triage
 
 Pick exactly one outcome:
 
-- **`ready`**: the issue meets every point of [the `ready` bar](../../docs/agents/triage-labels.md#the-ready-bar). It then waits in Ready for an agent to build it with no one watching, so apply it only when you are sure. When in doubt, it isn't `ready`.
+- **`ready`**: the issue meets every point of [the `ready` bar](../../docs/agents/triage-labels.md#the-ready-bar). Applying it starts the Implement workflow, which builds it at once with no one watching, so apply it only when you are sure. When in doubt, it isn't `ready`.
 - **`needs-info`**: you have questions only the owner can answer.
 - **`ready-for-human`**: it's clear, but fails the `ready` bar. If it touches the [hand-back list](../../docs/agents/issue-tracker.md#hand-back-list), say which item.
 - **`wontfix`**: a duplicate, already done, covered by an out-of-scope record, or not worth doing. Apply the label and recommend it in your comment; never close the issue: the owner does.
