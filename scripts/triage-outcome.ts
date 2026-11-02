@@ -50,16 +50,29 @@ export function decide({
 
   // The bot posts with the owner's PAT, so its comments are the owner's. The Original
   // note a `ready` triage posts also starts with the disclaimer, but it isn't the reasons.
-  const triaged = comments.some(
-    (c) =>
-      c.id > since &&
+  const newer = comments.filter((c) => c.id > since);
+  const triaged = newer.some((c) => {
+    const body = c.body.trimStart();
+    return (
       c.author === owner &&
-      c.body.startsWith(DISCLAIMER) &&
-      !c.body.slice(DISCLAIMER.length).trimStart().startsWith("Original note:"),
-  );
-  if (!triaged) return { pass: false, reason: `no new triage comment since comment ${since}` };
+      body.startsWith(DISCLAIMER) &&
+      !body.slice(DISCLAIMER.length).trimStart().startsWith("Original note:")
+    );
+  });
+  if (!triaged) {
+    const found = `${newer.length} newer comment${newer.length === 1 ? "" : "s"}, none a triage comment`;
+    return { pass: false, reason: `no new triage comment since comment ${since} (${found})` };
+  }
 
   return { pass: true, outcome: outcomes[0] };
+}
+
+// The board column a passing triage moves the issue to, or null to leave it alone.
+export function statusFor(outcome: string, assigned: boolean): string | null {
+  // HITL is everything waiting on the owner.
+  if (outcome !== "ready") return "HITL";
+  // Someone may already have claimed it and moved it to In progress.
+  return assigned ? null : "Ready";
 }
 
 if (import.meta.main) {
@@ -83,10 +96,9 @@ if (import.meta.main) {
       process.exit(1);
     }
     console.log(`#${issue} triaged: ${decision.outcome}`);
-    if (decision.outcome !== "ready") console.log(`#${issue} → ${setStatus(issue, "HITL")}`);
-    // Someone may already have claimed it and moved it to In progress.
-    else if (assignees.length > 0) console.log(`#${issue} is assigned, Status left alone`);
-    else console.log(`#${issue} → ${setStatus(issue, "Ready")}`);
+    const column = statusFor(decision.outcome, assignees.length > 0);
+    if (column) console.log(`#${issue} → ${setStatus(issue, column)}`);
+    else console.log(`#${issue} is assigned, Status left alone`);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.log(`::error::${issue ? `#${issue}: ` : ""}${message.split("\n")[0]}`);
