@@ -8,8 +8,6 @@ name: Implement
 on:
   issues:
     types: [labeled]
-  # TEMPORARY: registers the workflow so the branch can be dispatched. Revert before merging.
-  pull_request:
   workflow_dispatch:
     inputs:
       issue:
