@@ -54,13 +54,14 @@ for (const route of routes) {
       }
       if (width === 390) {
         // The intro is the first paragraph under the h1, wherever it sits in the page.
+        // It may take up to two lines (owner decision on issue 69).
         const intro = page.locator("h1 ~ p, h1 + p").first();
         if ((await intro.count()) > 0) {
           const lines = await intro.evaluate((el) => {
             const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
             return Math.round(el.getBoundingClientRect().height / lineHeight);
           });
-          expect(lines, "intro line count at 390").toBe(1);
+          expect(lines, "intro line count at 390").toBeLessThanOrEqual(2);
         }
       }
       expect(errors).toEqual([]);
