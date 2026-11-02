@@ -24,7 +24,7 @@ IMPORTANT: Before starting a task, identify which of these files are relevant an
 
 ### Issue tracker
 
-Issues and specs are GitHub issues, managed with `gh`. A spec is a parent issue with its tickets as sub-issues. See `docs/agents/issue-tracker.md`.
+Issues and specs are GitHub issues, managed with `gh`. A spec is a parent issue with its tickets as sub-issues. A merged PR with `Closes #<n>` closes a code ticket. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
