@@ -126,7 +126,7 @@ jobs:
             exit 0
           fi
           if [ -z "$pr" ] && git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
-            gh pr create --draft --base main --head "$BRANCH" --title "WIP: issue $ISSUE" \
+            gh pr create --draft --base main --head "$BRANCH" --title "chore(auto): wip on issue $ISSUE" \
               --body "The Implement run stopped before opening a PR ($CLAUDE_OUTCOME): $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Part of issue $ISSUE."
             pr=new
           fi

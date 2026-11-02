@@ -22,7 +22,7 @@ The [hand-back list](../../docs/agents/issue-tracker.md#hand-back-list) holds th
 
 1. `gh pr create --base main --head <branch>`. The title is a conventional commit, as in `docs/git-workflow.md`, since it becomes the squash commit on `main`. The description says what changed and why, then a short test plan, then `Closes #<n>` on a line of its own. Write any other issue as "issue <n>", without the `#` (see "close or resolve a ticket" in `docs/agents/issue-tracker.md`). If an earlier run left a draft PR on the branch, edit its title and description instead and mark it ready with `gh pr ready <pr>`.
 2. When the change shows on screen, post the screenshots as in step 6 of `docs/browser-verification.md`. Say in the comment that the walk ran headless in CI.
-3. Don't merge, and don't edit the issue's labels or board Status: the workflow does that.
+3. Don't run `/code-review` or another review: the owner reviews every bot PR. Don't merge, and don't edit the issue's labels or board Status: the workflow does that.
 
 ## Hand it back
 

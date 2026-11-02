@@ -14,7 +14,7 @@ Personal portfolio site (jpyepez.com) — Astro 5 static site, Tailwind + DaisyU
 IMPORTANT: Before starting a task, identify which of these files are relevant and read them.
 
 - [Domain glossary — brand, theses, cadence, goals](./GLOSSARY.md) — read for any content, copy, scope, or feature decision
-- Active specs are GitHub issues labelled `ready` that have sub-issues — read the relevant one (`gh issue view <n> --json number,title,body,labels,comments`) before implementing a feature
+- Active specs are GitHub issues labelled `ready` and `spec` that have sub-issues (`ready` without `spec` starts the Implement bot) — read the relevant one (`gh issue view <n> --json number,title,body,labels,comments`) before implementing a feature
 - [Architecture](./docs/architecture.md) — folder layout, content model, planned routes
 - [Git workflow](./docs/git-workflow.md) — commit format, branching
 - [Testing strategy](./docs/testing-strategy.md) — read before writing or changing a test, or adding a route
