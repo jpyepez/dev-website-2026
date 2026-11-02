@@ -52,6 +52,17 @@ for (const route of routes) {
         await expect(page.getByRole("textbox", { name: "Message" })).toBeVisible();
         await expect(page.getByRole("button", { name: "Send message" })).toBeVisible();
       }
+      if (width === 390) {
+        // The intro is the first paragraph under the h1, wherever it sits in the page.
+        const intro = page.locator("h1 ~ p, h1 + p").first();
+        if ((await intro.count()) > 0) {
+          const lines = await intro.evaluate((el) => {
+            const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
+            return Math.round(el.getBoundingClientRect().height / lineHeight);
+          });
+          expect(lines, "intro line count at 390").toBe(1);
+        }
+      }
       expect(errors).toEqual([]);
     });
   }
