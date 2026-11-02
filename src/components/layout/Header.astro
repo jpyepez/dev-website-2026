@@ -57,15 +57,21 @@ const links = [
     }
     <nav class="flex gap-5 md:gap-6 text-sm" aria-label="Primary">
       {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="inline-flex min-h-11 items-center text-base-content/70 hover:text-primary transition-colors"
-            aria-current={Astro.url.pathname.startsWith(link.href) ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        ))
+        links.map((link) => {
+          const isCurrent = Astro.url.pathname.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "inline-flex min-h-11 items-center hover:text-primary transition-colors",
+                isCurrent ? "text-base-content" : "text-base-content/70",
+              ]}
+              aria-current={isCurrent ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
   </div>

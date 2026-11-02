@@ -56,3 +56,14 @@ for (const route of routes) {
     });
   }
 }
+
+test("the nav link for the current page is a different colour from the others", async ({ page }) => {
+  await page.goto("/uses", { waitUntil: "networkidle" });
+  const nav = page.getByRole("navigation", { name: "Primary" });
+  const colour = (name: string) =>
+    nav.getByRole("link", { name }).evaluate((el) => getComputedStyle(el).color);
+
+  const current = await colour("Uses");
+  expect(await colour("Contact")).not.toBe(current);
+  await expect(nav.getByRole("link", { name: "Uses" })).toHaveAttribute("aria-current", "page");
+});
