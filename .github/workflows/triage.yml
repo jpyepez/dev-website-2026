@@ -66,11 +66,21 @@ jobs:
         uses: actions/checkout@v7
 
       # So the agent can run `bun run test` when reproducing a bug, and the last step can
-      # run `bun run board-status`.
+      # run `bun run triage-outcome`.
       - if: steps.check.outputs.skip == 'false'
         uses: oven-sh/setup-bun@v2
       - if: steps.check.outputs.skip == 'false'
         run: bun install --frozen-lockfile
+
+      # The newest comment id before the agent runs (0 if none). Comment ids increase over
+      # time, so the outcome check counts only comments above it as this run's.
+      - name: Record the newest comment
+        id: marker
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          since=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?per_page=100" --jq '.[].id' | sort -n | tail -n 1)
+          echo "since=${since:-0}" >> "$GITHUB_OUTPUT"
+          echo "#$ISSUE newest comment before the agent: ${since:-none}"
 
       - if: steps.check.outputs.skip == 'false'
         uses: anthropics/claude-code-action@v1
@@ -84,29 +94,8 @@ jobs:
 
       - name: Check the outcome and set the board Status
         if: steps.check.outputs.skip == 'false'
-        run: |
-          labels=$(gh issue view "$ISSUE" --json labels --jq '[.labels[].name] | join(" ")')
-          claimed=$(gh issue view "$ISSUE" --json assignees --jq '.assignees | length')
-          categories=0
-          outcomes=0
-          outcome=
-          for label in $labels; do
-            case $label in
-              bug | enhancement | documentation) categories=$((categories + 1)) ;;
-              ready | needs-info | ready-for-human | wontfix | needs-triage)
-                outcomes=$((outcomes + 1))
-                outcome=$label
-                ;;
-            esac
-          done
-          # A bad triage shows up as a red run, not a mislabelled issue.
-          if [ "$categories" -ne 1 ] || [ "$outcomes" -ne 1 ] || [ "$outcome" = needs-triage ]; then
-            echo "::error::#$ISSUE needs one category and one outcome label, has: ${labels:-none}"
-            exit 1
-          fi
-          case $outcome in
-            # Someone may already have claimed it and moved it to In progress.
-            ready) [ "$claimed" -gt 0 ] || bun run board-status "$ISSUE" Ready ;;
-            # HITL is everything waiting on the owner.
-            *) bun run board-status "$ISSUE" HITL ;;
-          esac
+        # Fails unless the labels are right and this run posted its triage comment; a
+        # failed check leaves the Status alone. See scripts/triage-outcome.ts.
+        env:
+          SINCE: ${{ steps.marker.outputs.since }}
+        run: bun run triage-outcome "$ISSUE" "$SINCE"
