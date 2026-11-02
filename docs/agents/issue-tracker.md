@@ -38,7 +38,7 @@ Read it as in **Read an issue** above.
 
 A merged PR closes the ticket. Open a PR to `main` with `Closes #<n>` in the description for each ticket it finishes; the issue stays open until that PR merges, even when the work is finished on a branch.
 
-Put each `Closes #<n>` on a line of its own. Anywhere else in a PR description, `close`, `fix` or `resolve` in any tense before `#<n>` also links that issue and closes it on merge, even mid-sentence: "a run on closed #50" closes 50. A linked issue moves to In progress on the board. Mention any other issue without the `#`: "issue 50". Squash-merge, then delete the branch.
+Put each `Closes #<n>` on a line of its own, and write any other issue as "issue 50", without the `#`. GitHub reads `close`, `fix` or `resolve` in any tense before `#<n>`, anywhere in the description, as closing that issue: the board moves it to In progress at once, and the merge closes it.
 
 Work that ships no code (wontfix, duplicates, pathfinder resolves, a parent spec whose sub-issues are all closed) closes directly: `gh issue close <number> --comment "..."`.
 
