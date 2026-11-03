@@ -1,6 +1,6 @@
 # Home page leads with an interactive visual hero
 
-On 2026-05-14 we decided creative coding would be surfaced but not foregrounded on the home page. On 2026-10-02, after comparing five home-page directions side by side, we reversed that: the home page now opens with an interactive generative figure (terrain drawn in type that responds to the pointer, drifts slowly and ripples on click), while the copy and nav stay engineer-first. The look and numbers are in `docs/home-design.md`. Reasons: the hero shows Thesis B (AI makes high-fidelity visual work affordable) instead of describing it, it makes the site more memorable to NZ meetup and LinkedIn audiences, and the user now wants the site to be a place to try creative ideas, since AI makes quick experiments cheap.
+On 2026-05-14 we decided creative coding would be surfaced but not foregrounded on the home page. On 2026-10-02, after comparing five home-page directions side by side, we reversed that: the home page now opens with an interactive generative figure (terrain drawn in type that responds to the pointer, drifts slowly and ripples on click), while the copy and nav stay engineer-first. The look and numbers are in `docs/home-design.md`. Reasons: the hero shows Thesis B (AI makes high-fidelity visual work affordable) instead of describing it, and the owner wants the site to be a place to try creative ideas, since AI makes quick experiments cheap.
 
 ## Considered Options
 

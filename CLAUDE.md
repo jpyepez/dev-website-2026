@@ -1,6 +1,6 @@
-# JP Yepez — Personal Site
+# JP Yepez — Engineering Portfolio
 
-Personal portfolio site (jpyepez.com) — Astro 5 static site, Tailwind + DaisyUI, deployed to Vercel. Engineer-led brand with a planned blog + creative-coding lab; serves NZ reputation-building, not generic audience.
+Engineering portfolio (jpyepez.com), with writing and a creative-coding lab — Astro 5 static site, Tailwind + DaisyUI, deployed to Vercel. Written for NZ engineers and companies who might work with the owner.
 
 ## Commands
 
@@ -13,9 +13,9 @@ Personal portfolio site (jpyepez.com) — Astro 5 static site, Tailwind + DaisyU
 
 IMPORTANT: Before starting a task, identify which of these files are relevant and read them.
 
-- [Domain glossary — brand, theses, cadence, goals](./GLOSSARY.md) — read for any content, copy, scope, or feature decision
+- [Domain glossary — audience, brand, theses, pages](./GLOSSARY.md) — read for any content, copy, scope, or feature decision
 - Active specs are GitHub issues labelled `ready` and `spec` that have sub-issues (`ready` without `spec` starts the Implement bot) — read the relevant one (`gh issue view <n> --json number,title,body,labels,comments`) before implementing a feature
-- [Architecture](./docs/architecture.md) — folder layout, content model, planned routes
+- [Architecture](./docs/architecture.md) — folder layout, content model, routes
 - [Git workflow](./docs/git-workflow.md) — commit format, branching
 - [Testing strategy](./docs/testing-strategy.md) — read before writing or changing a test, or adding a route
 - [Browser verification](./docs/browser-verification.md) — read before handing back or opening a PR for a change visible on the site
@@ -36,4 +36,4 @@ Glossary `GLOSSARY.md`, ADRs `docs/adr/`, out-of-scope `docs/out-of-scope/`, all
 
 ### Notes
 
-Running notes are GitHub issues labelled `notes`, added to as comments. Post ideas live in the pinned "Post ideas" issue.
+Running notes are GitHub issues labelled `notes`, added to as comments.

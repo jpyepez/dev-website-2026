@@ -1,43 +1,33 @@
-# Astro Starter Kit: Minimal
+# jpyepez.com
 
-```sh
-bun create astro@latest -- --template minimal
-```
+The source for [jpyepez.com](https://jpyepez.com), JP Yepez's engineering portfolio, with writing and a creative-coding lab.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with Astro 5, Tailwind 4 and daisyUI 5, and deployed to Vercel.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | What it does |
+| --- | --- |
+| `bun install` | Install dependencies |
+| `bun dev` | Start the dev server at `localhost:4321` |
+| `bun run build` | Build the site to `dist/` |
+| `bun run preview` | Serve the build locally |
+| `bun run lint` | Lint with oxlint |
+| `bun run typecheck` | Run `astro check` |
+| `bun run test` | Unit tests |
+| `bun run test:e2e` | Playwright smoke tests against the built site |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+The contact form needs a `WEB3FORMS_ACCESS_KEY` in `.env` to send.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Docs
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- [Architecture](docs/architecture.md): folder layout, content model, styling
+- [Testing strategy](docs/testing-strategy.md)
+- [Git workflow](docs/git-workflow.md)
+- [Glossary](GLOSSARY.md), [ADRs](docs/adr/) and the page design records in `docs/*-design.md`
 
-Any static assets, like images, can be placed in the `public/` directory.
+Most changes are made with AI agents. Their working docs are in [`CLAUDE.md`](CLAUDE.md) and [`docs/agents/`](docs/agents/).
 
-## 🧞 Commands
+## License
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+No license is granted. The code is public to read, but all rights are reserved.

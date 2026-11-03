@@ -17,7 +17,7 @@ A runtime flag would cost more than it gives:
 - Client-side evaluation ships the section in the HTML and hides it after
   hydration — a visible flash, and the content is still in the page source.
 - Server-side evaluation means moving those routes to SSR and paying a function
-  invocation per request on a personal site.
+  invocation per request on a static portfolio.
 - Flag SDKs default to `false` when they can't reach their API, which ad
   blockers cause routinely. A nav link that silently disappears for a slice of
   visitors is worse than the problem being solved.

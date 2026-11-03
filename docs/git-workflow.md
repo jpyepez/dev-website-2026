@@ -1,6 +1,6 @@
 # Git Workflow
 
-Solo personal project. Every change reaches `main` through a pull request, so each one gets a Vercel preview and a place for review before it ships.
+Solo project. Every change reaches `main` through a pull request, so each one gets a Vercel preview and a place for review before it ships.
 
 ## Commit format
 
