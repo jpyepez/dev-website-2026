@@ -5,7 +5,7 @@ How the engineering skills should consume this repo's domain documentation when 
 ## Where they live
 
 - **Glossaries** (read every one, in this order):
-  - `GLOSSARY.md`: writable
+  - `GLOSSARY.md`: writable. It defines terms and the current decisions behind them: no personal planning, schedules, goals or self-assessment.
 - **ADRs**: `docs/adr/`: writable
 - **Out of scope**: `docs/out-of-scope/`: writable
 - **Notes**: GitHub issues labelled `notes`

@@ -54,6 +54,6 @@ Rejected:
 ## Rejected
 
 - **Round 1:** Editorial (light, serif, writing-led) looked empty until posts exist. Terminal (mono spec sheet) played down the visual half of the brand. Poster (huge expanded grotesk, orange block) was memorable but left no room for nuance. The original centred layout looked like most developer sites.
-- **Round 2 (Lab riffs):** Stir (halftone dots with spring physics) let the interaction take over. Survey (light printed topo map) was busy, and its legend took over the screen on phones. Contours (full-bleed contour hero) was the runner-up: the user loved its colours, which carried over here, but the framed piece was more interesting.
+- **Round 2 (Lab riffs):** Stir (halftone dots with spring physics) let the interaction take over. Survey (light printed topo map) was busy, and its legend took over the screen on phones. Contours (full-bleed contour hero) was the runner-up: its colours carried over here, but the framed piece was more interesting.
 - **Specimen · Lines** (the same frame drawn with contour lines) lost to the type version.
 - **Drift by panning** two noise layers read as the image sliding sideways; replaced with z-axis drift.

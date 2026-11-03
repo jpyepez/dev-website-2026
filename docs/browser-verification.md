@@ -21,7 +21,7 @@ Keep every script, screenshot and comment file out of the repo: in the session's
    - a table: what was walked, what showed, which criterion it checks;
    - the images in a two-column table, `![<alt>](./<file>.png)`, 1280 and 390 of each route side by side.
 
-   The repo is private, so the images show only for people signed in with access. Skip this step for a change with nothing to see on screen. Done when the comment renders on the PR.
+   Images posted on a PR are visible to anyone who can see the repo. Skip this step for a change with nothing to see on screen. Done when the comment renders on the PR.
 7. **Clean up.** Close the page and stop the preview server, unless the user wants it left running. Done when port 4174 is free (`lsof -i :4174` prints nothing).
 
 ## Headless route

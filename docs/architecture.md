@@ -15,10 +15,10 @@ Astro 5 static site, server-rendered at build time, deployed to Vercel.
 
 ## Content model
 
-Today the site is hand-rolled pages only. Per the [site-blog-lab PRD](https://github.com/jpyepez/dev-website-2026/blob/94a71d1/.work/prds/site-blog-lab.md) (archived; removed from the tree when specs moved to GitHub issues), two new surfaces are planned:
+Home, uses and contact are hand-rolled pages. Two surfaces hold content:
 
-- **Blog** — Astro content collection at `src/content/blog/`, MDX per post, Zod-validated frontmatter. Index + `[...slug]` routes under `src/pages/blog/`.
-- **Lab** — page-per-piece under `src/pages/lab/`. Each piece imports its own dependencies. A small ordered list in `src/features/lab/pieces.ts` powers the index. A shared `LabFrame.astro` layout gives each piece a consistent writeup + demo frame.
+- **Blog** — Astro content collection at `src/content/blog/` (Markdown or MDX per post), with Zod-validated frontmatter in `src/content.config.ts`. Routes under `src/pages/blog/`: the index (titled Writing), `[...slug]` per post, and `rss.xml.ts`. The collection is empty for now.
+- **Lab** — an index at `src/pages/lab/index.astro`, fed by the ordered list in `src/features/lab/pieces.ts`. Pieces will be page-per-piece under `src/pages/lab/`, each importing its own dependencies; none have routes yet.
 
 Asymmetry rationale: blog content is uniform, so a collection earns its abstraction; lab content is irregular per piece, so page-per-piece avoids over-constraining.
 
