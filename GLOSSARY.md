@@ -1,6 +1,6 @@
 # jpyepez.com
 
-Shared domain glossary for the jpyepez.com personal site.
+Shared domain glossary for jpyepez.com, an engineering portfolio.
 
 ## Glossary
 

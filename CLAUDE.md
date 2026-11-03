@@ -1,6 +1,6 @@
-# JP Yepez — Personal Site
+# JP Yepez — Engineering Portfolio
 
-Personal portfolio site (jpyepez.com) — Astro 5 static site, Tailwind + DaisyUI, deployed to Vercel. Engineer-led portfolio with a blog and a creative-coding lab, written for NZ engineers and companies who might work with the owner.
+Engineering portfolio (jpyepez.com), with writing and a creative-coding lab — Astro 5 static site, Tailwind + DaisyUI, deployed to Vercel. Written for NZ engineers and companies who might work with the owner.
 
 ## Commands
 

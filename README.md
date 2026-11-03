@@ -1,6 +1,6 @@
 # jpyepez.com
 
-The source for [jpyepez.com](https://jpyepez.com), JP Yepez's personal site: a portfolio, a blog and a creative-coding lab.
+The source for [jpyepez.com](https://jpyepez.com), JP Yepez's engineering portfolio, with writing and a creative-coding lab.
 
 Built with Astro 5, Tailwind 4 and daisyUI 5, and deployed to Vercel.
 
