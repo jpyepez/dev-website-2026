@@ -30,6 +30,10 @@ Issues and specs are GitHub issues, managed with `gh`. A spec is a parent issue 
 
 Default five triage roles; `ready-for-agent` is written as `ready`. See `docs/agents/triage-labels.md`.
 
+### Automation
+
+Triage and implement run on the [github-agents](https://github.com/jpyepez/github-agents) engine, configured in `.github/agents.yml`. See "Automation" in `docs/agents/issue-tracker.md`.
+
 ### Domain docs
 
 Glossary `GLOSSARY.md`, ADRs `docs/adr/`, out-of-scope `docs/out-of-scope/`, all writable. See `docs/agents/domain.md`.
