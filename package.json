@@ -6,13 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "og": "bun scripts/og.ts",
-    "board-status": "bun scripts/board-status.ts",
-    "triage-outcome": "bun scripts/triage-outcome.ts",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "oxlint",
     "typecheck": "astro check",
-    "test": "bun test src scripts",
+    "test": "bun test src",
     "test:e2e": "playwright test"
   },
   "dependencies": {
