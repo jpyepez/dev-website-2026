@@ -6,7 +6,7 @@ The site has one theme, dark (`data-theme="night"` on `<html>`), so every screen
 
 This walk runs before the PR is reviewed. It doesn't replace the check in [git-workflow.md](./git-workflow.md#pull-requests), where the owner looks at the Vercel preview on a real phone before merging.
 
-Keep every script, screenshot and comment file out of the repo: in the session's scratchpad, or `$RUNNER_TEMP` on a CI runner. Call that folder `<out>`.
+Keep every script, screenshot and comment file out of the repo: in the session's scratchpad, or the agent's output folder on a CI runner. Call that folder `<out>`.
 
 ## Steps
 
@@ -63,7 +63,9 @@ await browser.close();
 console.log(JSON.stringify(report, null, 2));
 ```
 
-Run it with the preview from step 1 up: `node <out>/walk.mjs "$PWD" <out>`. Add the routes and criteria the ticket touches, but keep the contact form unsubmitted. Then read every screenshot (step 4), and read the printed report for statuses and console messages (step 5).
+Run it with the preview from step 1 up: `node <out>/walk.mjs "$PWD" <out>`. Add the routes and criteria the ticket touches, but keep the contact form unsubmitted. If a criterion needs the form's submit behaviour, stub Web3Forms with `page.route('**/api.web3forms.com/**', ...)` so nothing is sent; CI blocks every host off its allowlist anyway. Then read every screenshot (step 4), and read the printed report for statuses and console messages (step 5).
+
+In CI the agent has no `gh`: it saves at most 10 screenshots to the `screenshots` folder of its output folder, and the workflow posts them on the PR in place of step 6.
 
 ## Report
 

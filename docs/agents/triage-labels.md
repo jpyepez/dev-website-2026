@@ -19,12 +19,12 @@ Issues labelled `notes` are running notes, not requests: `/triage-issues` skips 
 In this repo `ready` means an agent may build the issue unattended. Applying it starts the [Implement workflow](issue-tracker.md#automation), which builds the issue at once. Apply `ready` only when all of these hold:
 
 - The change is small: about one module plus its tests.
-- Every acceptance criterion can be checked by a test or a screenshot.
+- Every acceptance criterion can be checked by a test, a screenshot or, for a config- or docs-only change, by reading the diff.
 - For a bug: it was reproduced, or its cause is confirmed in the code.
 - It touches nothing on the [hand-back list](issue-tracker.md#hand-back-list).
 - It leaves no product or design decision open.
 
-When in doubt, it isn't `ready`. A clear issue that fails the bar gets `ready-for-human`.
+When in doubt, it isn't `ready`. A clear issue that fails the bar gets `ready-for-human`. The Triage and Implement workflows read the bar from this section, so this is the only copy.
 
 ## Categories
 

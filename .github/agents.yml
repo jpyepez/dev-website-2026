@@ -1,0 +1,6 @@
+# Settings for the github-agents engine (jpyepez/github-agents, docs/design.md "Settings").
+# A missing key falls back to the more cautious default.
+board: 1
+automation: implement
+# build before test:e2e: under CI, playwright.config.ts serves dist/ without building it.
+checks: [lint, typecheck, test, build, test:e2e]
