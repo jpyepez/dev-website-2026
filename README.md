@@ -16,6 +16,7 @@ Built with Astro 5, Tailwind 4 and daisyUI 5, and deployed to Vercel.
 | `bun run typecheck` | Run `astro check` |
 | `bun run test` | Unit tests |
 | `bun run test:e2e` | Playwright smoke tests against the built site |
+| `bun run og` | Render `public/og.png` (the 1200×630 social image) from the home page's name, role and tagline, using headless Chrome (needs Chrome installed). Run it after changing that copy |
 
 The contact form needs a `WEB3FORMS_ACCESS_KEY` in `.env` to send.
 
